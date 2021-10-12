@@ -1,6 +1,6 @@
 # 2021-2-OSSP2-PeachGarden-6
 
-21년 2학기 공개SW프로젝트 02 6조 팀 도원결의
+21년 2학기 공개SW프로젝트 02 6조 팀 도원결의  
 KBO 선수 비교 Web 서비스 "Player-Battle"
 
 
