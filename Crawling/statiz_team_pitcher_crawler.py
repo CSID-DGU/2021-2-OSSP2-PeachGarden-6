@@ -36,7 +36,7 @@ df_res = df_res.drop(columns=['순','정렬'], axis=1)
 df_res.reset_index(inplace=True, drop=True)
 
 # rename columns
-df_res.columns = ["이름", "팀", "G","타석","타수","득점","안타","2루타","3루타","홈런","루타","타점","도루","도루실패","볼넷","사구","고의사구","삼진","병살","희생타","희플","타율","출루율","장타율","OPS","wOBA","wRC+","WAR*", "WPA"]
+df_res.columns = ["이름", "팀", "출장","완투","완봉","선발","승","패","세이브","홀드","이닝","실점","자책","타자","피안타","피2루","피3루","피홈런","볼넷","고의사구","사구","탈삼진","보크","폭투","ERA","FIP","WHIP","ERA+", "FIP+", "WAR", "WPA"]
 
 # Print DataFrame
 print(df_res)
