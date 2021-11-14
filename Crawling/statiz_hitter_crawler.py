@@ -72,12 +72,24 @@ df_res["birth"] = ds_bat_birth_list
 idx_pitcher = df_res[df_res['팀'].str.contains('P')].index
 df_res_1 = df_res.drop(idx_pitcher)
 
-# save as csv
-df_res_1.to_csv("batter_stat.csv", mode='w', encoding='utf-8')
+# pre-process pid
 df_res_1.reset_index(inplace=True, drop=True)
+df_res_2 = df_res_1.sort_values(by=df_res.columns[0], ascending= True)
+
+batter_id = 10000
+pid_list = []
+
+for i in range(len(df_res_2)):
+    pid_list.append(batter_id)
+    batter_id += 1
+
+df_res_2["pid"] = pid_list
+
+# save as csv
+df_res_2.to_csv("hitter_stat.csv", mode='w', encoding='utf-8')
 
 # Print DataFrame
-print(df_res_1)
+print(df_res_2)
 print("done!")
 
 driver.close()
