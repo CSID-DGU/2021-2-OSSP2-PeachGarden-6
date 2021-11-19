@@ -4,7 +4,7 @@ from html_table_parser import parser_functions as parser
 from selenium.webdriver.common.keys import Keys
 import pandas as pd
 
-driver = webdriver.Chrome()
+driver = webdriver.Chrome("C:\chromedriver.exe")
 driver.implicitly_wait(5)
 
 best_list = []
