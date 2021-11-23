@@ -15,7 +15,7 @@ team_list = ['두산','삼성','NC','히어로즈','SK','한화','LG','롯데','
 
 flag = 0
 
-win_rate = [[1 for col in range(10)] for row in range(10)]
+win_rate = [[0 for col in range(10)] for row in range(10)]
 
 for row in csvReader:
     if flag != 0:

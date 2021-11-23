@@ -10,7 +10,7 @@ driver.implicitly_wait(5)
 best_list = []
 worst_list = []
 date_list = []
-url = "http://www.statiz.co.kr/boxscore.php?opt=1&date=2021-10-28"
+url = "http://www.statiz.co.kr/boxscore.php?opt=1&date=2021-10-30"
 driver.get(url)
 
 html = driver.page_source
