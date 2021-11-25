@@ -1,21 +1,58 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Link from "next/link";
+import React from "react";
+import styled from "styled-components";
+import MainSectionType1 from "../components/common/MainSectionType1";
+import MainSectionType2 from "../components/common/MainSectionType2";
+import { LEADERBOARD_DUMMY_DATA, MAIN_RANK_DUMMY_DATA, TEAM_WAA_DUMMY_DATA } from "../constants/dummy/mainpage";
 
-const Postlink = (props) => (
-    <li>
-        <Link as={`/p/${props.id}`} href={`/style?title=${props.title}`}>
-            <a>{props.title}</a>
-        </Link>
-    </li>
-)
+// type:
+// 0: 걍 사진
+// 1: 그래프
+const MAIN_SECTION_LIST = [
+  {
+    title: "선수 검색",
+    type: 0,
+  },
+  {
+    title: "주요 순위",
+    type: 1,
+    columns: ["항목", "1위", "", "2위", "",  "3위", ""],
+    data: MAIN_RANK_DUMMY_DATA,
+  },
+  {
+    title: "팀 순위",
+    type: 1,
+    columns: ["순위", "팀명", "경기수", "승", "패", "무", "승차"],
+    data: LEADERBOARD_DUMMY_DATA,
+  },
+  {
+    title: "팀 분석(WAA)",
+    type: 1,
+    columns: ["팀", "타격", "주루", "수비", "선발", "구원"],
+    data: TEAM_WAA_DUMMY_DATA,
+  },
+];
 
-export default () => (
-    <Layout>
-        <h1>Player battle</h1>
-        <ul>
-            <Postlink title="hello"/>
-            <Postlink title="hello 2트"/>
-            <Postlink title="hello 3트"/>
-        </ul>
-    </Layout>
-)
+const Index = () => {
+  return (
+    <MainPageDiv>
+      {MAIN_SECTION_LIST.map(({ title, type, columns, data }, index) =>
+        type === 0 ? (
+          <MainSectionType1 text={title} key={index}/>
+        ) : (
+          <MainSectionType2 text={title} columnList={columns} parentIndex={index} data={data} key={index}/>
+        )
+      )}
+    </MainPageDiv>
+  );
+};
+
+const MainPageDiv = styled.div`
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+`;
+
+export default Index;
