@@ -88,6 +88,7 @@ const SearchOptionDiv = styled.div``;
 
 const SearchOptionLine = styled.div`
   display: flex;
+  text-align: center;
 `;
 
 const OptionListDiv = styled.div`
@@ -107,6 +108,10 @@ const OptionRadioDiv = styled.div`
 
 const TextInput = styled.input`
   width: 400px;
+  height: 30px;
+  margin: 0;
+  margin-top: 8px;
+  margin-left: 20px;
 `;
 
 export default memo(SearchOptionSection);

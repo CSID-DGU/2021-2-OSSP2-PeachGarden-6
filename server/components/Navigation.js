@@ -43,7 +43,7 @@ const NavigationDiv = styled.div`
   width: 1200px;
   padding: 0 calc(50% - 600px);
   height: fit-content;
-  background-color: #aaaaaa;
+  background-color: #000000;
   display: flex;
   justify-content: space-between;
 `;

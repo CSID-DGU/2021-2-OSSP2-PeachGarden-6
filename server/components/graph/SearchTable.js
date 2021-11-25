@@ -32,7 +32,8 @@ const BasicTableTable = styled.table`
   width: 100%;
   height: 400px;
   margin-top: 20px;
-  background-color: ${colors.main};
+  background-color: ${colors.white};
+  border-collapse: collapse;
 `;
 
 const BasicTableColumn = ({ columnList }) => {
@@ -85,6 +86,9 @@ const BasicTableData = styled.td`
   width: 100px;
   height: 40px;
   border: 2px solid ${colors.black};
+  border-left : none;
+  border-right: none;
+  text-align: center;
 `;
 
 export default SearchTable;

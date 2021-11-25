@@ -11,12 +11,16 @@ const ButtonType1 = ({text, onClick}) => {
 }
 
 const ButtonType1Button = styled.button`
-  width: 200px;
-  height: 40px;
+  width: 100px;
+  height: 30px;
   background-color: ${colors.main};
   color: ${colors.white};
   font-weight: bold;
   font-size: 15px;
+  margin: 0;
+  margin-top: 11px;
+  margin-left: 15px;
+  border-radius: 5px;
 `;
 
 export default memo(ButtonType1);

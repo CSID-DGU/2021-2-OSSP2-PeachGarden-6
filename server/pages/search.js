@@ -36,12 +36,13 @@ Search.getInitialProps = async (context) => {
 }
 
 const SearchMainDiv = styled.div`
-  width: 90%;
-  margin: 10px 5%;
+  width: 100%;
+  margin: 10px;
 `;
 
 const SearchTitle = styled.p`
   font-size: 20px;
+  font-weight: bold;
 `;
 
 export default Search;

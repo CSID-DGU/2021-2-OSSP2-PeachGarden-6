@@ -15,8 +15,9 @@ const OptionBadgeDiv = styled.div`
   padding: 15px 0;
   font-size: 15px;
   color: ${colors.black};
-  background-color: ${colors.gray};
+  background-color: ${colors.lightgray};
   border: 1px solid ${colors.white};
+  border-radius : 5px;
 `;
 
 export default memo(OptionBadge);
