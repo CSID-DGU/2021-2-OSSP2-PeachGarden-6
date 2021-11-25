@@ -7,7 +7,7 @@ curs = conn.cursor()
 
 conn.commit()
 
-f = open('./team_stat.csv','r',encoding='utf-8')
+f = open('./Data/team_stat.csv','r',encoding='utf-8')
 
 team = ['두산', '삼성', 'NC', '키움', 'SSG', '한화','LG','롯데', 'KIA', 'KT']
 

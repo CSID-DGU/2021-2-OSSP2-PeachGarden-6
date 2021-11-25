@@ -7,7 +7,7 @@ curs = conn.cursor()
 
 conn.commit()
 
-f1 = open('./hitter_stat.csv','r',encoding='utf-8')
+f1 = open('./Data/hitter_stat.csv','r',encoding='utf-8')
 
 team_list = ['두','삼','N','키','S','한','L','롯','기','K']
 
