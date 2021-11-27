@@ -33,7 +33,11 @@ const SearchOptionSection = ({ optionList }) => {
       {optionList.map(({ option, list, text }, index) => (
         <SearchOptionLine>
           <OptionBadge text={text} />
-          <OptionList list={list} option={option} />
+          {option === "position" ? (
+            <OptionList list={list[searchOption.role]} option={option} />
+          ) : (
+            <OptionList list={list} option={option} />
+          )}
         </SearchOptionLine>
       ))}
       <SearchOptionLine>
@@ -69,6 +73,9 @@ const OptionRadio = ({ text, isChecked, option }) => {
   const handleChecked = () => {
     let temp = { ...searchOption };
     temp[option] = text;
+    if (option === 'role') {
+      temp.position = '';
+    }
     setSearchOption(temp);
   };
   return (

@@ -12223,7 +12223,7 @@ var MainPageDiv = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -12248,5 +12248,5 @@ module.exports = dll_202902f7c98643d43eb0;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]));;
+},[[4,"static/runtime/webpack.js"]]]));;
 //# sourceMappingURL=index.js.map

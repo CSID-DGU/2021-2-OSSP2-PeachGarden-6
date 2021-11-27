@@ -23,7 +23,7 @@ const SearchTable = ({ data }) => {
   return (
     <BasicTableTable>
       <BasicTableColumn columnList={COLUMN_LIST} />
-      {data && <BasicTableBody data={data} handleClick={handleClick} />}
+      {data && data.length > 0 && <BasicTableBody data={data} handleClick={handleClick} />}
     </BasicTableTable>
   );
 };
@@ -52,15 +52,16 @@ const BasicTableColumn = ({ columnList }) => {
 
 const BasicTableBody = ({ data, handleClick }) => {
   return (
+    console.log("Sex", data),
     <BasicTableBodyBody>
-      {data.map(({ name, war, avg, hr, sb, rbi, obp, slg, ops }, index) => (
+      {data&&data.map(({ pname, war, hitAvg, hr, sb, rbi, obp, slg, ops }, index) => (
         <BasicTableRow>
           <BasicTableData>
             <ToggleButton onClick={handleClick} />
           </BasicTableData>
-          <BasicTableData>{name}</BasicTableData>
+          <BasicTableData>{pname}</BasicTableData>
           <BasicTableData>{war}</BasicTableData>
-          <BasicTableData>{avg}</BasicTableData>
+          <BasicTableData>{hitAvg}</BasicTableData>
           <BasicTableData>{hr}</BasicTableData>
           <BasicTableData>{sb}</BasicTableData>
           <BasicTableData>{rbi}</BasicTableData>

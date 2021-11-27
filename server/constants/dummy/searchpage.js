@@ -7,12 +7,26 @@ export const SEARCH_OPTION_LIST = [
   {
     option: "team",
     text: "팀",
-    list: ["두산", "삼성", "NC", "키움", "SSG", "한화", "LG", "롯데", "KIA", "KT"],
+    list: [
+      "두산",
+      "삼성",
+      "NC",
+      "키움",
+      "SSG",
+      "한화",
+      "LG",
+      "롯데",
+      "KIA",
+      "KT",
+    ],
   },
   {
     option: "position",
     text: "포지션",
-    list: ["C", "1B", "2B", "SS", "3B", "LF", "CF", "RF", "P"],
+    list: {
+      타자: ["C", "1B", "2B", "SS", "3B", "LF", "CF", "RF"],
+      투수: [],
+    },
   },
 ];
 
@@ -35,13 +49,13 @@ export const SEARCH_DUMMY_DATA = [
     hr: 6,
     sb: 13,
     rbi: 79,
-    obp: 0.400,
+    obp: 0.4,
     slg: 0.441,
     ops: 0.841,
   },
   {
     name: "양석환",
-    war: 3.10,
+    war: 3.1,
     avg: 0.273,
     hr: 28,
     sb: 2,
@@ -92,7 +106,7 @@ export const SEARCH_DUMMY_DATA = [
     rbi: 46,
     obp: 0.373,
     slg: 0.378,
-    ops: 0.700,
+    ops: 0.7,
   },
   {
     name: "정수빈",
@@ -103,7 +117,7 @@ export const SEARCH_DUMMY_DATA = [
     rbi: 37,
     obp: 0.326,
     slg: 0.374,
-    ops: 0.700,
+    ops: 0.7,
   },
   {
     name: "조수행",
@@ -127,4 +141,4 @@ export const SEARCH_DUMMY_DATA = [
     slg: 0.375,
     ops: 0.677,
   },
-]
+];
