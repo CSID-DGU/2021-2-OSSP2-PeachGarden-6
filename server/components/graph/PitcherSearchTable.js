@@ -7,16 +7,18 @@ const COLUMN_LIST = [
   "",
   "이름",
   "WAR",
-  "타율",
-  "홈런",
-  "도루",
-  "타점",
-  "출루율",
-  "장타율",
-  "OPS",
+  "G",
+  "승",
+  "패",
+  "홀드",
+  "세이브",
+  "이닝",
+  "탈삼진",
+  "ERA",
+  "WHIP",
 ];
 
-const HitterSearchTable = ({ data }) => {
+const PitcherSearchTable = ({ data }) => {
   const handleClick = useCallback(() => {
     console.log("클릭함");
   }, []);
@@ -54,20 +56,22 @@ const BasicTableBody = ({ data, handleClick }) => {
   return (
     console.log("check", data),
     <BasicTableBodyBody>
-      {data&&data.map(({ pname, war, hitAvg, hr, sb, rbi, obp, slg, ops }, index) => (
+      {data&&data.map(({ pname, war, playerGames, wins, loses, hld, sv, ip, so, era, whip }, index) => (
         <BasicTableRow>
           <BasicTableData>
             <ToggleButton onClick={handleClick} />
           </BasicTableData>
           <BasicTableData>{pname}</BasicTableData>
           <BasicTableData>{war}</BasicTableData>
-          <BasicTableData>{hitAvg}</BasicTableData>
-          <BasicTableData>{hr}</BasicTableData>
-          <BasicTableData>{sb}</BasicTableData>
-          <BasicTableData>{rbi}</BasicTableData>
-          <BasicTableData>{obp}</BasicTableData>
-          <BasicTableData>{slg}</BasicTableData>
-          <BasicTableData>{ops}</BasicTableData>
+          <BasicTableData>{playerGames}</BasicTableData>
+          <BasicTableData>{wins}</BasicTableData>
+          <BasicTableData>{loses}</BasicTableData>
+          <BasicTableData>{hld}</BasicTableData>
+          <BasicTableData>{sv}</BasicTableData>
+          <BasicTableData>{ip}</BasicTableData>
+          <BasicTableData>{so}</BasicTableData>
+          <BasicTableData>{era}</BasicTableData>
+          <BasicTableData>{whip}</BasicTableData>
         </BasicTableRow>
       ))}
     </BasicTableBodyBody>
@@ -92,4 +96,4 @@ const BasicTableData = styled.td`
   text-align: center;
 `;
 
-export default HitterSearchTable;
+export default PitcherSearchTable;

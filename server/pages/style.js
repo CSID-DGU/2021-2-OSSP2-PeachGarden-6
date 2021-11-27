@@ -1,4 +1,5 @@
 import Layout from '../components/Layout'
+import getPlayer from '../db'
 
 const Index = (props) => (
     console.log(props),
@@ -13,5 +14,7 @@ Index.getInitialProps = async (context) => {
 
     return { title: title };
 };
+
+getPlayer.getPlayer() 
 
 export default Index;

@@ -7,6 +7,8 @@ const searchPitcherStat = ({ name, team }) => `
     , PS.LOSES
     , PS.SV
     , PS.HLD
+    , PS.IP
+    , PS.SO
     , PS.ERA
     , PS.WHIP
   FROM
@@ -33,7 +35,7 @@ const searchPitcherStat = ({ name, team }) => `
     AND TS.SHORT_NAME = "${team}"`
       : ``
   }
-  ORDER BY PID DESC
+  ORDER BY WAR DESC
 `;
 
 const searchHitterStat = ({ name, position, team }) => `
@@ -73,11 +75,11 @@ const searchHitterStat = ({ name, position, team }) => `
   }
   ${
     position
-      ? `
+      ?position !== '전체'? `
     AND HS.PLAYER_POS = "${position}"`
-      : ``
+      : ``:``
   }
-  ORDER BY PID DESC
+  ORDER BY WAR DESC
 `;
 
 const testQuery = () => `

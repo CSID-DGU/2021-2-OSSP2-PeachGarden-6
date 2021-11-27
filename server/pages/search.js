@@ -3,7 +3,8 @@ import { useEffect, useMemo, useState } from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import SearchOptionSection from "../components/common/SearchOptionSection";
-import SearchTable from "../components/graph/SearchTable";
+import HitterSearchTable from "../components/graph/SearchTable";
+import PitcherSearchTable from "../components/graph/PitcherSearchTable";
 import { SEARCH_DUMMY_DATA, SEARCH_OPTION_LIST } from "../constants/dummy/searchpage";
 import { LOCAL_URL, urlSet } from "../constants/urls";
 import { searchState } from "../recoil/search";
@@ -18,14 +19,12 @@ const Search = (props) => {
     // 리스트 갱신
     await axios
       .get(urlSet.searchPlayer + `?a=a${role ? `&role=${role}` : ``}${team ? `&team=${team}` : ``}${position ? `&position=${position}` : ``}${name ? `&name=${name}` : ``}`)
-      .then(({ data:{data} }) => {
-        if(data)
-        {
+      .then(({ data: { data } }) => {
+        if (data) {
           console.log(data);
           setPlayerList(data);
         }
-        else
-        {
+        else {
           setPlayerList([]);
         }
       })
@@ -34,19 +33,30 @@ const Search = (props) => {
       });
     setSearchOption({
       name: name ? name : null,
-      position: position ? position : 'C',
+      position: position ? position : '전체',
       role: role ? role : '타자',
       team: team ? team : '두산',
     })
   }, [props]);
 
-  return (
-    <SearchMainDiv>
-      <SearchTitle>선수 검색</SearchTitle>
-      <SearchOptionSection optionList={SEARCH_OPTION_LIST} />
-      {!playerList||playerList.length === 0?<p>값 없음</p>:<SearchTable data={playerList} />}
-    </SearchMainDiv>
-  );
+  if (role === '타자') {
+    return (
+      <SearchMainDiv>
+        <SearchTitle>선수 검색</SearchTitle>
+        <SearchOptionSection optionList={SEARCH_OPTION_LIST} />
+        {!playerList || playerList.length === 0 ? <p>값 없음</p> : <HitterSearchTable data={playerList} />}
+      </SearchMainDiv>
+    );
+  }
+  else {
+    return (
+      <SearchMainDiv>
+        <SearchTitle>선수 검색</SearchTitle>
+        <SearchOptionSection optionList={SEARCH_OPTION_LIST} />
+        {!playerList || playerList.length === 0 ? <p>값 없음</p> : <PitcherSearchTable data={playerList} />}
+      </SearchMainDiv>
+    );
+  }
 };
 
 Search.getInitialProps = async (context) => {

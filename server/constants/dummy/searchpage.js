@@ -24,7 +24,7 @@ export const SEARCH_OPTION_LIST = [
     option: "position",
     text: "포지션",
     list: {
-      타자: ["C", "1B", "2B", "SS", "3B", "LF", "CF", "RF"],
+      타자: ["전체","C", "1B", "2B", "SS", "3B", "LF", "CF", "RF"],
       투수: [],
     },
   },

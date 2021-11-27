@@ -31,7 +31,7 @@ conn.commit()
 f1.close()
 
 # insert pitcher
-f2 = open('./pitcher_stat.csv','r',encoding='utf-8')
+f2 = open('./Data/pitcher_stat.csv','r',encoding='utf-8')
 
 csvReader = csv.reader(f2)
 flag = 0
