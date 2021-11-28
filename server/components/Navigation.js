@@ -40,8 +40,8 @@ const NavButton = ({ text, href }) => {
 };
 
 const NavigationDiv = styled.div`
-  width: 1200px;
-  padding: 0 calc(50% - 600px);
+  width: 800px;
+  padding: 0 calc(50% - 400px);
   height: fit-content;
   background-color: #000000;
   display: flex;

@@ -187,7 +187,7 @@ var NavButton = function NavButton(_ref2) {
 var NavigationDiv = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "Navigation__NavigationDiv",
   componentId: "sc-jvyhur-0"
-})(["width:1200px;padding:0 calc(50% - 600px);height:fit-content;background-color:#000000;display:flex;justify-content:space-between;"]);
+})(["width:800px;padding:0 calc(50% - 400px);height:fit-content;background-color:#000000;display:flex;justify-content:space-between;"]);
 var NavButtonButton = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.button.withConfig({
   displayName: "Navigation__NavButtonButton",
   componentId: "sc-jvyhur-1"
@@ -301,7 +301,7 @@ var Root = /*#__PURE__*/function (_App) {
 var MainArea = styled_components__WEBPACK_IMPORTED_MODULE_4___default.a.div.withConfig({
   displayName: "_app__MainArea",
   componentId: "sc-18jabd8-0"
-})(["position:relative;width:1200px;padding:102px calc(50% - 600px);"]);
+})(["position:relative;width:800px;padding:102px calc(50% - 400px);"]);
 /* harmony default export */ __webpack_exports__["default"] = (Root);
 
 /***/ }),

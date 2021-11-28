@@ -1,7 +1,7 @@
 const searchPitcherStat = ({ name, team }) => `
   SELECT
-    PL.PNAME
-    , PL.PID
+    PL.PID
+    , PL.PNAME
     , PS.WAR
     , PS.PLAYER_GAMES
     , PS.WINS
@@ -41,8 +41,8 @@ const searchPitcherStat = ({ name, team }) => `
 
 const searchHitterStat = ({ name, position, team }) => `
   SELECT
-    PL.PNAME
     PL.PID
+    , PL.PNAME
     , HS.WAR
     , HS.HIT_AVG
     , HS.HR

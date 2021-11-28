@@ -91,11 +91,18 @@ const OptionRadio = ({ text, isChecked, option }) => {
   );
 };
 
-const SearchOptionDiv = styled.div``;
+const SearchOptionDiv = styled.div`
+  &>:last-child {
+    &>:nth-child(n) {
+      margin-right: 20px;
+    }
+  }
+`;
 
 const SearchOptionLine = styled.div`
   display: flex;
   text-align: center;
+  align-items: center;
 `;
 
 const OptionListDiv = styled.div`
@@ -106,19 +113,13 @@ const OptionListDiv = styled.div`
 const OptionRadioDiv = styled.div`
   display: flex;
   align-items: center;
-  padding: 15px;
-  & :nth-child(n) {
-    margin: 0;
-    margin-left: 10px;
-  }
+  padding: 0 0 0 10px;
+  font-size: 12px;
 `;
 
 const TextInput = styled.input`
   width: 400px;
   height: 30px;
-  margin: 0;
-  margin-top: 8px;
-  margin-left: 20px;
 `;
 
 export default memo(SearchOptionSection);

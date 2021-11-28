@@ -27,8 +27,8 @@ class Root extends App {
 
 const MainArea = styled.div`
   position: relative;
-  width: 1200px;
-  padding: 102px calc(50% - 600px);
+  width: 800px;
+  padding: 102px calc(50% - 400px);
 `;
 
 export default Root;

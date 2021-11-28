@@ -3,11 +3,11 @@ import { colors } from "../../constants/colors";
 
 const ToggleButton = ({isSelected, onClick}) => {
   return (
-    <ToggleButtonButton onClick={onClick} isCheck={isSelected}/>
+    <ToggleButtonButton type={`checkbox`} onClick={onClick} checked={isSelected}/>
   );
 }
 
-const ToggleButtonButton = styled.button`
+const ToggleButtonButton = styled.input`
   width: 30px;
   height: 30px;
   background-color: unset;
