@@ -53,10 +53,10 @@ const Search = (props) => {
         <SearchOptionSection optionList={SEARCH_OPTION_LIST} />
         {!playerList || playerList.length === 0 ? (
           <p>값 없음</p>
-        ) : role === "타자" ? (
-          <HitterSearchTable data={playerList} />
-        ) : (
+        ) : role === "투수" ? (
           <PitcherSearchTable data={playerList} />
+        ) : (
+          <HitterSearchTable data={playerList} />
         )}
       </SearchMainDiv>
       <CompareModal />

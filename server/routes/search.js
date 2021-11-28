@@ -12,18 +12,18 @@ router.get(urlSet.searchPlayer, async (req, res, next) => {
   const data = db.responseData();
   const { name, position, role, team } = req.query;
   let playerResult = null;
-  if (role==='타자') {
+  if (role==='투수') {
     playerResult = await db.sqlSelect(
-      searchHitterStat({ 
+      searchPitcherStat({ 
         name: name?name:null,
-        position: position?position:null,
         team: team?team:null,
       })
     );
   } else {
     playerResult = await db.sqlSelect(
-      searchPitcherStat({ 
+      searchHitterStat({ 
         name: name?name:null,
+        position: position?position:null,
         team: team?team:null,
       })
     );
