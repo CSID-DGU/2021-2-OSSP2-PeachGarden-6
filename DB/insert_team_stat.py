@@ -17,7 +17,7 @@ flag = 0
 for row in csvReader:
     if flag != 0:
         tname = row[1]
-
+        gb = row[6]
         if row[6] == '-':
             gb = 0
 

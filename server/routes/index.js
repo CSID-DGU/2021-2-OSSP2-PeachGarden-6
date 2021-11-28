@@ -8,9 +8,28 @@ const db = require('./../db');
 router.get(urlSet.leaderboard, async (req, res) => {
   let result = db.responseData();
   try {
-   await db.sqlSelect(searchLeaderboard); 
+    let actualReturn = [];
+    let count = 1;
+    const temp = await db.sqlSelect(searchLeaderboard());
+
+    temp.map((item, index) => {
+      let resultList = {
+        title: '',
+        list: [],
+      }
+      resultList.title = count;
+      Object.values(item).map((item2, index2) => {
+        resultList.list.push(item2);
+      })
+      ++count;
+      actualReturn.push(resultList);
+    });
+    result.data.resultList = actualReturn;
+    return res.status(200).send(result);
   } catch (error) {
-    
+    result.error = 1;
+    result.message = error;
+    return res.status(200).send(result);
   }
 });
 
@@ -73,8 +92,35 @@ router.get(urlSet.topThree, async (req, res) => {
   }
 });
 
-router.get(urlSet.waa, (req, res) => {
-  db.sqlSelect(searchWAA, res);
+router.get(urlSet.waa, async (req, res) => {
+  let result = db.responseData();
+  try {
+    let actualReturn = [];
+    const temp = await db.sqlSelect(searchWAA());
+
+    temp.map((item, index) => {
+      let resultList = {
+        title: '',
+        list: [],
+      }
+      console.log(item);
+      count = 0;
+      Object.values(item).map((item2, index2) => {
+        if (count === 0)
+          resultList.title = item2;
+        else
+          resultList.list.push(item2);
+        ++count;
+      })
+      actualReturn.push(resultList);
+    });
+    result.data.resultList = actualReturn;
+    return res.status(200).send(result);
+  } catch (error) {
+    result.error = 1;
+    result.message = error;
+    return res.status(200).send(result);
+  }
 });
 
 

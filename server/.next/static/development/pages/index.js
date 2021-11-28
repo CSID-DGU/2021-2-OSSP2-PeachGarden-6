@@ -14447,8 +14447,8 @@ var MAIN_SECTION_LIST = [{
 var Index = function Index() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])([]),
       _useState2 = _slicedToArray(_useState, 2),
-      topThreeList = _useState2[0],
-      setTopThreeList = _useState2[1];
+      leaderboardList = _useState2[0],
+      setleaderboardList = _useState2[1];
 
   Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -14456,13 +14456,13 @@ var Index = function Index() {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_constants_urls__WEBPACK_IMPORTED_MODULE_8__["urlSet"].topThree).then(function (_ref2) {
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_constants_urls__WEBPACK_IMPORTED_MODULE_8__["urlSet"].leaderboard).then(function (_ref2) {
               var data = _ref2.data.data;
 
               if (data) {
-                setTopThreeList(data.resultList);
+                setleaderboardList(data.resultList);
               } else {
-                setTopThreeList([]);
+                setleaderboardList([]);
               }
             }).catch(function (e) {
               console.error(e);
@@ -14475,11 +14475,73 @@ var Index = function Index() {
       }
     }, _callee);
   })), []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(MainPageDiv, null, MAIN_SECTION_LIST.map(function (_ref3, index) {
-    var title = _ref3.title,
-        type = _ref3.type,
-        columns = _ref3.columns,
-        data = _ref3.data;
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      topThreeList = _useState4[0],
+      setTopThreeList = _useState4[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_constants_urls__WEBPACK_IMPORTED_MODULE_8__["urlSet"].topThree).then(function (_ref4) {
+              var data = _ref4.data.data;
+
+              if (data) {
+                setTopThreeList(data.resultList);
+              } else {
+                setTopThreeList([]);
+              }
+            }).catch(function (e) {
+              console.error(e);
+            });
+
+          case 2:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2);
+  })), []);
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_3__["useState"])([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      waaList = _useState6[0],
+      setWaaList = _useState6[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+      while (1) {
+        switch (_context3.prev = _context3.next) {
+          case 0:
+            _context3.next = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get(_constants_urls__WEBPACK_IMPORTED_MODULE_8__["urlSet"].waa).then(function (_ref6) {
+              var data = _ref6.data.data;
+
+              if (data) {
+                setWaaList(data.resultList);
+              } else {
+                setWaaList([]);
+              }
+            }).catch(function (e) {
+              console.error(e);
+            });
+
+          case 2:
+          case "end":
+            return _context3.stop();
+        }
+      }
+    }, _callee3);
+  })), []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(MainPageDiv, null, MAIN_SECTION_LIST.map(function (_ref7, index) {
+    var title = _ref7.title,
+        type = _ref7.type,
+        columns = _ref7.columns,
+        data = _ref7.data;
     return type === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_common_MainSectionType1__WEBPACK_IMPORTED_MODULE_5__["default"], {
       text: title,
       key: index
@@ -14489,6 +14551,18 @@ var Index = function Index() {
     columnList: ["항목", "1위", "", "2위", "", "3위", ""],
     parentIndex: 1,
     data: topThreeList,
+    key: 1
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_common_MainSectionType2__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    text: "팀 순위",
+    columnList: ["순위", "팀명", "경기수", "승", "패", "무", "승률", "승차"],
+    parentIndex: 1,
+    data: leaderboardList,
+    key: 1
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_common_MainSectionType2__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    text: "팀 WAA",
+    columnList: ["항목", "타격", "주루", "수비", "선발", "구원"],
+    parentIndex: 1,
+    data: waaList,
     key: 1
   }));
 };

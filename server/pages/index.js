@@ -36,6 +36,23 @@ const MAIN_SECTION_LIST = [
 ];
 
 const Index = () => {
+  const [leaderboardList, setleaderboardList] = useState([]);
+  useEffect(async () => {
+    await axios
+      .get(urlSet.leaderboard)
+      .then(({ data: { data } }) => {
+        if (data) {
+          setleaderboardList(data.resultList);
+        }
+        else {
+          setleaderboardList([]);
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }, []);
+
   const [topThreeList, setTopThreeList] = useState([]);
   useEffect(async () => {
     await axios
@@ -53,6 +70,23 @@ const Index = () => {
       });
   }, []);
 
+  const [waaList, setWaaList] = useState([]);
+  useEffect(async () => {
+    await axios
+      .get(urlSet.waa)
+      .then(({ data: { data } }) => {
+        if (data) {
+          setWaaList(data.resultList);
+        }
+        else {
+          setWaaList([]);
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }, []);
+
   return (
     <MainPageDiv>
       {MAIN_SECTION_LIST.map(({ title, type, columns, data }, index) =>
@@ -61,6 +95,8 @@ const Index = () => {
         ) : (null)
       )}
       <MainSectionType2 text={"주요 순위"} columnList={["항목", "1위", "", "2위", "", "3위", ""]} parentIndex={1} data={topThreeList} key={1} />
+      <MainSectionType2 text={"팀 순위"} columnList={["순위", "팀명", "경기수", "승", "패", "무", "승률", "승차"]} parentIndex={1} data={leaderboardList} key={1} />
+      <MainSectionType2 text={"팀 WAA"} columnList={["항목","타격", "주루", "수비", "선발", "구원"]} parentIndex={1} data={waaList} key={1} />
     </MainPageDiv>
   );
 };

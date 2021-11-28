@@ -18,7 +18,8 @@ const searchLeaderboard = () => `
 
 const searchWAA = () => `
   SELECT
-    TS.WAA_BATTING
+    T.SHORT_NAME
+    , TS.WAA_BATTING
     , TS.WAA_RUNNING
     , TS.WAA_DEFENSE
     , TS.WAA_STARTING
