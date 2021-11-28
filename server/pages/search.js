@@ -21,7 +21,6 @@ const Search = (props) => {
       .get(urlSet.searchPlayer + `?a=a${role ? `&role=${role}` : ``}${team ? `&team=${team}` : ``}${position ? `&position=${position}` : ``}${name ? `&name=${name}` : ``}`)
       .then(({ data: { data } }) => {
         if (data) {
-          console.log(data);
           setPlayerList(data);
         }
         else {

@@ -5,6 +5,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const indexRouter = require('./routes/index');
 const searchRouter = require('./routes/search');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -21,6 +22,7 @@ app.prepare()
     app.render(req, res, actualPage, queryPage);
   })
 
+  server.use('/', indexRouter);
   server.use('/', searchRouter);
 
   server.get('*', (req, res) => {

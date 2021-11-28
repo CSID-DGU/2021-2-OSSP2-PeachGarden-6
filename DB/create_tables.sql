@@ -189,7 +189,7 @@ CREATE TABLE pitcher_detail (
 	sup_score DECIMAL(3,2),
 	rel_rate DECIMAL(3,1),
 	bera DECIMAL(3,2),
-	bpwa DECIMAL(3,2),
+	bwpa DECIMAL(3,2),
 	PRIMARY KEY(player_id),
 	CONSTRAINT FK_players_pitcher_detail FOREIGN KEY(player_id) REFERENCES players(pid)
 );

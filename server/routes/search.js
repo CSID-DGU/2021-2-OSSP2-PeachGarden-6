@@ -8,27 +8,29 @@ const { urlSet } = require("../constants/urls");
 var router = express.Router();
 const db = require("./../db");
 
-router.get(urlSet.searchPlayer, (req, res, next) => {
+router.get(urlSet.searchPlayer, async (req, res, next) => {
+  const data = db.responseData();
   const { name, position, role, team } = req.query;
   let playerResult = null;
   if (role==='타자') {
-    playerResult = db.sqlSelect(
+    playerResult = await db.sqlSelect(
       searchHitterStat({ 
         name: name?name:null,
         position: position?position:null,
         team: team?team:null,
       })
-      , res
     );
   } else {
-    playerResult = db.sqlSelect(
+    playerResult = await db.sqlSelect(
       searchPitcherStat({ 
         name: name?name:null,
         team: team?team:null,
       })
-      , res
     );
   }
+  
+  data.data = playerResult;
+  return res.status(200).send(data);
 });
 
 module.exports = router;
