@@ -5,6 +5,7 @@ import ButtonType1 from "../Button/ButtonType1";
 import PlayerBagde from "../Badge/PlayerBadge";
 import { useRecoilState } from "recoil";
 import { selectedPlayerState } from "../../recoil/search";
+import root from "window-or-global";
 
 const CompareModal = () => {
   const [selectedPlayer, setSelectedPlayer] =
@@ -12,6 +13,14 @@ const CompareModal = () => {
 
   const cleanSelection = useCallback(() => {
     setSelectedPlayer([]);
+  }, [selectedPlayer]);
+
+  const comparePlayers = useCallback(() => {
+    if (selectedPlayer.length !== 2) {
+      root.alert("비교할 두 선수를 선택해주세요!");
+      return;
+    }
+    root.open(`/`, `comparePopup`, `toolbar=no, menubar=no, location=no, status=no, resizable=no, fullscreen=no, width=1200, height=600`, false);
   }, [selectedPlayer]);
   return (
     <CompareModalDiv>
@@ -25,7 +34,7 @@ const CompareModal = () => {
         ))}
       </MainDiv>
       <FotterDiv>
-        <ButtonType1 text="비교하기" />
+        <ButtonType1 text="비교하기" onClick={comparePlayers}/>
       </FotterDiv>
     </CompareModalDiv>
   );
