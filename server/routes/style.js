@@ -4,7 +4,7 @@ const { urlSet } = require("../constants/urls");
 var router = express.Router();
 const db = require("../db");
 
-router.get(urlSet.searchStyle, async (req, res, next) => {
+router.get(urlSet.style, async (req, res, next) => {
   const data = db.responseData();
   const { style, script } = req.query;
   let styleResult = null;

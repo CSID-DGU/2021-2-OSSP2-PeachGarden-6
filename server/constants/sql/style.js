@@ -5,7 +5,7 @@ const searchStyle = () => `
     , SCRIPT
     FROM
       PLAYER_STYLE_LIST
-    ORDER BY ID DESC
+    ORDER BY ID ASC
 `;
 
 module.exports = { searchStyle };

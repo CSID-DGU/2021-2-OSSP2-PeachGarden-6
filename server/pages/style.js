@@ -2,7 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 import Layout from '../components/Layout';
 import styled from "styled-components";
-import BasicTable from '../components/graph/BasicTable';
+import MainSectionType2 from "../components/common/MainSectionType2";
 import { STYLE_DUMMY_DATA } from '../constants/dummy/stylepage';
 import React, { useEffect, useState } from "react";
 import { urlSet } from "../constants/urls";
@@ -24,17 +24,17 @@ const Style = () => {
         else {
           setStyleList([]);
         }
+        console.log(`dd`, data);
       })
       .catch((e) => {
         console.error(e);
       });
-      console.log(data);
   }, []);
 
   return (
     <StyleMainLayout>
       <StyleTitle>선수 호칭</StyleTitle>
-      <BasicTable data={styleList} />
+      <MainSectionType2 text="" columnList={["칭호", "기준"]} parentIndex={1} data={styleList} pageType={`style`} />
     </StyleMainLayout>
   );
 };
@@ -45,7 +45,7 @@ const StyleTitle = styled.p`
 `;
 
 const StyleMainLayout = styled.div`
-  width: 80%;
+  width: 100%;
 `;
 
 export default Style;

@@ -7,6 +7,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const searchRouter = require('./routes/search');
+const styleRouter = require('./routes/style');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
@@ -24,6 +25,7 @@ app.prepare()
 
   server.use('/', indexRouter);
   server.use('/', searchRouter);
+  server.use('/', styleRouter);
 
   server.get('*', (req, res) => {
     return handle(req, res);
