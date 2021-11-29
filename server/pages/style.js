@@ -1,34 +1,51 @@
+import axios from "axios";
+import Link from "next/link";
 import Layout from '../components/Layout';
 import styled from "styled-components";
-import StyleTable from '../components/graph/StyleTable';
+import BasicTable from '../components/graph/BasicTable';
 import { STYLE_DUMMY_DATA } from '../constants/dummy/stylepage';
-// const Index = (props) => (
-//     console.log(props),
-//     <Layout>
-//         <h1>{props.title}</h1>
-//         <p>Style page</p>
-//     </Layout>
-// )
+import React, { useEffect, useState } from "react";
+import { urlSet } from "../constants/urls";
 
-// Index.getInitialProps = async (context) => {
-//     const title = context.query.title;
+const STYLE_SECTION = {
+  columns: ["칭호", "기준"],
+  data: STYLE_DUMMY_DATA,
+};
 
-//     return { title: title };
-// };
+const Style = () => {
+  const [styleList, setStyleList] = useState([]);
+  useEffect(async () => {
+    await axios
+      .get(urlSet.style)
+      .then(({ data: { data } }) => {
+        if (data) {
+          setStyleList(data.resultList);
+        }
+        else {
+          setStyleList([]);
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+      console.log(data);
+  }, []);
 
-const TeamTitle = styled.p`
+  return (
+    <StyleMainLayout>
+      <StyleTitle>선수 호칭</StyleTitle>
+      <BasicTable data={styleList} />
+    </StyleMainLayout>
+  );
+};
+
+const StyleTitle = styled.p`
   font-size: 20px;
   font-weight: bold;
 `;
 
-const MainLayout = styled.div`
-  width: 100%;
+const StyleMainLayout = styled.div`
+  width: 80%;
 `;
 
-export default() => (
-    <MainLayout>
-        <TeamTitle>선수 호칭</TeamTitle>
-        <StyleTable data={STYLE_DUMMY_DATA} />
-    </MainLayout>
-    
-)
+export default Style;
