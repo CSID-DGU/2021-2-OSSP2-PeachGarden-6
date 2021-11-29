@@ -18,6 +18,13 @@ export const playerListState = atom({
   default: [],
 });
 
+export const playerRoleState = atom({
+  key: "playerRole",
+  default: '타자',
+  effects_UNSTABLE: [persistAtom],
+});
+
+
 export const selectedPlayerState = atom({
   key: "selectedPlayer",
   default: [],

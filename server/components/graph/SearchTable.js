@@ -3,7 +3,9 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 import { selectedPlayerState } from "../../recoil/search";
+import { valueExtractor } from "../../utils/functions";
 import ToggleButton from "../Button/ToggleButton";
+import root from "window-or-global";
 
 const COLUMN_LIST = [
   "",
@@ -50,65 +52,31 @@ const BasicTableColumn = ({ columnList }) => {
 };
 
 const BasicTableBody = ({ data }) => {
-  const [selectedIndex, setSelectedIndex] = useState([]);
   const [selectedPlayer, setSelectedPlayer] =
     useRecoilState(selectedPlayerState);
 
-  useEffect(() => {
-    let container = [];
-    let targetIndexes = selectedPlayer.map((item, index) => item.id);
-    data.map((item, index) => {if(targetIndexes.includes(item.pid)) container.push(index)});
-    setSelectedIndex(container);
-  }, [data]);
-
-  const onClick = (index) => {
-    if (selectedIndex.includes(index)) {
-      setSelectedIndex(selectedIndex.filter((item) => item !== index));
+  const onClick = (pid) => {
+    if (
+      valueExtractor({
+        data: selectedPlayer,
+        key: "id",
+      }).includes(pid)
+    ) {
+      // 제거
       setSelectedPlayer(
-        selectedPlayer.filter((item, index2) => item.id !== data[index].pid)
+        selectedPlayer.filter((item, index2) => item.id !== pid)
       );
     } else {
-      if (selectedIndex.length < 2) {
-        setSelectedIndex([...selectedIndex, index]);
-        selectedPlayer.map((item, index) => {
-          console.log(item);
-          console.log(data[index].pid);
-          if (item.id === data[index].pid) {
-            return ;
-          }
-        })
-        setSelectedPlayer([
-          ...selectedPlayer,
-          {
-            name: data[index].pname,
-            id: data[index].pid,
-          },
-        ]);
-      } else {
-        setSelectedIndex([selectedIndex[1], index]);
-        selectedPlayer.map((item, index) => {
-          if (item.id === data[index].pid) {
-            return ;
-          }
-        })
-        if (selectedPlayer.length < 2) {
-          setSelectedPlayer([
-            ...selectedPlayer,
-            {
-              name: data[index].pname,
-              id: data[index].pid,
-            },
-          ]);
-        } else {
-          setSelectedPlayer([
-            selectedPlayer[1],
-            {
-              name: data[index].pname,
-              id: data[index].pid,
-            },
-          ]);
-        }
+      // 추가
+      if (selectedPlayer.length === 2) {
+        root.alert("선수 비교는 최대 2인까지만 가능합니다!\n우측 리스트를 확인해주세요!");
+        return;
       }
+      let target = data.filter((item, index) => item.pid === pid)[0];
+      setSelectedPlayer([
+        ...selectedPlayer,
+        { name: target.pname, id: target.pid },
+      ]);
     }
   };
 
@@ -116,12 +84,15 @@ const BasicTableBody = ({ data }) => {
     <BasicTableBodyBody>
       {data &&
         data.map(
-          ({ pname, war, hitAvg, hr, sb, rbi, obp, slg, ops }, index) => (
+          ({ pname, war, hitAvg, hr, sb, rbi, obp, slg, ops, pid }, index) => (
             <BasicTableRow>
               <BasicTableData>
                 <ToggleButton
-                  onClick={() => onClick(index)}
-                  isSelected={selectedIndex.includes(index)}
+                  onClick={() => onClick(pid)}
+                  isSelected={valueExtractor({
+                    data: selectedPlayer,
+                    key: "id",
+                  }).includes(pid)}
                 />
               </BasicTableData>
               <BasicTableData>{pname}</BasicTableData>

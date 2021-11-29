@@ -10,13 +10,16 @@ import {
   SEARCH_OPTION_LIST,
 } from "../constants/dummy/searchpage";
 import { LOCAL_URL, urlSet } from "../constants/urls";
-import { playerListState, searchState, selectedPlayerState } from "../recoil/search";
+import { playerListState, playerRoleState, searchState, selectedPlayerState } from "../recoil/search";
 import CompareModal from "../components/Modal/CompareModal";
 
 const Search = (props) => {
   const [searchOption, setSearchOption] = useRecoilState(searchState);
+  const [playerRole, setPlayerRole] = useRecoilState(playerRoleState);
   const { role, team, position, name } = props;
   const [playerList, setPlayerList] = useRecoilState(playerListState);
+  const [selectedPlayer, setSelectedPlayer] =
+    useRecoilState(selectedPlayerState);
 
   useEffect(async () => {
     console.log("목표 검색값: ", role, team, position, name);
@@ -45,6 +48,13 @@ const Search = (props) => {
       team: team ? team : "두산",
     });
   }, [props]);
+
+  useEffect(() => {
+    if (role && role !== playerRole) {
+      setSelectedPlayer([]);
+      setPlayerRole(role);
+    }
+  }, [role, playerRole]);
 
   return (
     <>
