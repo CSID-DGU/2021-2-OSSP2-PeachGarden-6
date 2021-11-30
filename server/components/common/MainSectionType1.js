@@ -15,4 +15,11 @@ export const MainSectionDiv = styled.div`
   background-color: ${colors.mainFaded};
 `;
 
+export const MainSectionDiv2 = styled.div`
+  width: 100%;
+  height: 600px;
+  background-color: ${colors.mainFaded};
+`;
+
+
 export default MainSectionType1;

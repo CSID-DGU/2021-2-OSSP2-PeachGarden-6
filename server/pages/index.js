@@ -94,9 +94,9 @@ const Index = () => {
           <MainSectionType1 text={title} key={index} />
         ) : (null)
       )}
-      <MainSectionType2 text={"주요 순위"} columnList={["항목", "1위", "", "2위", "", "3위", ""]} parentIndex={1} data={topThreeList} key={1} />
-      <MainSectionType2 text={"팀 순위"} columnList={["순위", "팀명", "경기수", "승", "패", "무", "승률", "승차"]} parentIndex={1} data={leaderboardList} key={1} />
-      <MainSectionType2 text={"팀 WAA"} columnList={["항목","타격", "주루", "수비", "선발", "구원"]} parentIndex={1} data={waaList} key={1} />
+      <MainSectionType2 text={"주요 순위"} columnList={["항목", "1위", "", "2위", "", "3위", ""]} parentIndex={1} data={topThreeList} key={1} pageType={`main`} />
+      <MainSectionType2 text={"팀 순위"} columnList={["순위", "팀명", "경기수", "승", "패", "무", "승률", "승차"]} parentIndex={1} data={leaderboardList} key={1} pageType={`main`} />
+      <MainSectionType2 text={"팀 WAA"} columnList={["항목", "타격", "주루", "수비", "선발", "구원"]} parentIndex={1} data={waaList} key={1} pageType={`main`} />
     </MainPageDiv>
   );
 };
