@@ -103,7 +103,6 @@ router.get(urlSet.waa, async (req, res) => {
         title: '',
         list: [],
       }
-      console.log(item);
       count = 0;
       Object.values(item).map((item2, index2) => {
         if (count === 0)

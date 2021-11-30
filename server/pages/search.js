@@ -13,7 +13,7 @@ import { LOCAL_URL, urlSet } from "../constants/urls";
 import { playerListState, playerRoleState, searchState, selectedPlayerState } from "../recoil/search";
 import CompareModal from "../components/Modal/CompareModal";
 
-const Search = (props) => {
+const SearchPage = (props) => {
   const [searchOption, setSearchOption] = useRecoilState(searchState);
   const [playerRole, setPlayerRole] = useRecoilState(playerRoleState);
   const { role, team, position, name } = props;
@@ -22,8 +22,6 @@ const Search = (props) => {
     useRecoilState(selectedPlayerState);
 
   useEffect(async () => {
-    console.log("목표 검색값: ", role, team, position, name);
-    // 리스트 갱신
     await axios
       .get(
         urlSet.searchPlayer +
@@ -74,7 +72,7 @@ const Search = (props) => {
   );
 };
 
-Search.getInitialProps = async (context) => {
+SearchPage.getInitialProps = async (context) => {
   const { role, team, position, name } = context.query;
   return { role: role, team: team, position: position, name: name };
 };
@@ -86,4 +84,4 @@ const SearchTitle = styled.p`
   font-weight: bold;
 `;
 
-export default Search;
+export default SearchPage;

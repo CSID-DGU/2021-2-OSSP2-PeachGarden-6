@@ -12,7 +12,7 @@ const STYLE_SECTION = {
   data: STYLE_DUMMY_DATA,
 };
 
-const Style = () => {
+const StylePage = () => {
   const [styleList, setStyleList] = useState([]);
   useEffect(async () => {
     await axios
@@ -24,7 +24,6 @@ const Style = () => {
         else {
           setStyleList([]);
         }
-        console.log(`dd`, data);
       })
       .catch((e) => {
         console.error(e);
@@ -48,4 +47,4 @@ const StyleMainLayout = styled.div`
   width: 100%;
 `;
 
-export default Style;
+export default StylePage;

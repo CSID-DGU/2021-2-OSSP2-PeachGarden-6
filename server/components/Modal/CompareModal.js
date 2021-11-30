@@ -20,7 +20,7 @@ const CompareModal = () => {
       root.alert("비교할 두 선수를 선택해주세요!");
       return;
     }
-    root.open(`/`, `comparePopup`, `toolbar=no, menubar=no, location=no, status=no, resizable=no, fullscreen=no, width=1200, height=600`, false);
+    root.open(`/compare`, `comparePopup`, `toolbar=no, menubar=no, location=no, status=no, resizable=no, fullscreen=no, width=800, height=600`, false);
   }, [selectedPlayer]);
   return (
     <CompareModalDiv>

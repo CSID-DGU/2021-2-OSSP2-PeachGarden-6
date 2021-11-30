@@ -64,7 +64,7 @@ const searchAllPitStat = ({ pid }) => `
   FROM
     pitcher_stat AS PS
   WHERE
-    P.pid = "${pid}"
+    PS.PLAYER_ID = "${pid}"
 `
 const searchAllHitStat = ({ pid }) => `
   SELECT
@@ -94,7 +94,7 @@ const searchAllHitStat = ({ pid }) => `
   FROM
     hitter_stat AS HS
   WHERE
-    P.pid = "${pid}"
+    HS.PLAYER_ID = "${pid}"
 `
 const searchPitcherStyle = ({ pid }) => `
   SELECT

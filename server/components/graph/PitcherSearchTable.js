@@ -24,7 +24,6 @@ const COLUMN_LIST = [
 
 const PitcherSearchTable = ({ data }) => {
   const handleClick = useCallback(() => {
-    console.log("클릭함");
   }, []);
   return (
     <BasicTableTable>
@@ -89,7 +88,6 @@ const BasicTableBody = ({ data, handleClick }) => {
     }
   };
   return (
-    console.log("check", data),
     (
       <BasicTableBodyBody>
         {data &&

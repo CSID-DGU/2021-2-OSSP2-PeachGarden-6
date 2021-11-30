@@ -30,7 +30,6 @@ const sqlSelect = async (sqlText) => {
   let result = await connection.query(sqlText);
   connection.release();
   result = result.map(objectToCamelCase);
-  console.log("정제 후: ", result);
   return result;
   } catch (error) {
     console.log(error);

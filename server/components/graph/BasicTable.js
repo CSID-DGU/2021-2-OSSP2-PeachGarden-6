@@ -32,11 +32,6 @@ const BasicTableColumn = ({ columnList, parentIndex }) => {
 };
 
 const BasicTableBody = ({ data }) => {
-  const renderer = (data) => {
-    for (const item of data) {
-      console.log(item);
-    }
-  }
   return (
     <BasicTableBodyBody>
       {data.map(({ title, list }, index) => (
