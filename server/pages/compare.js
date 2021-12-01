@@ -10,6 +10,7 @@ import root from "window-or-global";
 import ButtonType1 from "../components/Button/ButtonType1";
 import StatisticGraph from "../components/graph/StatisticGraph";
 import StatisticTable from "../components/graph/StatisticTable";
+import TextBadge from "../components/Badge/TextBadge";
 
 const ComparePage = () => {
   const [selectedPlayer, setSelectedPlayer] =
@@ -36,7 +37,6 @@ const ComparePage = () => {
             console.error(e);
           });
       }
-      console.log(result);
       setPlayerInfoList(result);
     }
   }, []);
@@ -44,21 +44,43 @@ const ComparePage = () => {
   const handleClick = useCallback(() => {
     setCurScreen(!curScreen);
   }, [curScreen]);
-  
+
   return (
-    <CompareDiv>
-      {playerInfoList.length === 2 && (
+    playerInfoList.length === 2 && (
+      <CompareDiv>
         <CompareTopDiv>
           <ProfileModal data={playerInfoList[0]} />
           <h1>VS</h1>
           <ProfileModal data={playerInfoList[1]} />
         </CompareTopDiv>
-      )}
-      <CompareContentDiv>
-        {curScreen ? <StatisticTable /> : <StatisticGraph />}
-      </CompareContentDiv>
-      <ButtonType1 text={curScreen ? `그래프` : `표`} onClick={handleClick} />
-    </CompareDiv>
+        )
+        {curScreen ? (
+          <CompareContentDiv>
+            <StatisticTable />
+          </CompareContentDiv>
+        ) : (
+          <CompareContentGraphDiv>
+            <StatisticGraph data={playerInfoList} />
+          </CompareContentGraphDiv>
+        )}
+        <CompareBottomDiv>
+          <TextBadge
+            text={playerInfoList[0].playerInfo.pname}
+            backgroundColor={colors.blue}
+            color={colors.white}
+          />
+          <TextBadge
+            text={playerInfoList[1].playerInfo.pname}
+            backgroundColor={colors.orange}
+            color={colors.white}
+          />
+          <ButtonType1
+            text={curScreen ? `그래프` : `표`}
+            onClick={handleClick}
+          />
+        </CompareBottomDiv>
+      </CompareDiv>
+    )
   );
 };
 
@@ -86,10 +108,32 @@ const CompareTopDiv = styled.div`
 `;
 
 const CompareContentDiv = styled.div`
+  display: flex;
   width: 100%;
   height: calc(100vh - 400px);
-  background-color: ${colors.main};
   overflow-y: scroll;
+  border: 1px solid ${colors.gray};
+`;
+
+const CompareContentGraphDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - 400px);
+  overflow-y: scroll;
+  border: 1px solid ${colors.gray};
+`;
+
+const CompareBottomDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  color: ${colors.red};
+  & > :nth-child(n) {
+    margin-left: 20px;
+  }
 `;
 
 export default ComparePage;
