@@ -15,7 +15,6 @@ router.get(urlSet.style, async (req, res, next) => {
       script: script ? script : null,
     })
   );
-
   data.data = styleResult;
   return res.status(200).send(data);
 });

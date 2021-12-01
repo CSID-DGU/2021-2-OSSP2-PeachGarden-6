@@ -2,7 +2,7 @@ import axios from "axios";
 import Link from "next/link";
 import Layout from '../components/Layout';
 import styled from "styled-components";
-import MainSectionType2 from "../components/common/MainSectionType2";
+import StyleSectionType from "../components/common/StyleSectionType";
 import { STYLE_DUMMY_DATA } from '../constants/dummy/stylepage';
 import React, { useEffect, useState } from "react";
 import { urlSet } from "../constants/urls";
@@ -19,7 +19,7 @@ const StylePage = () => {
       .get(urlSet.style)
       .then(({ data: { data } }) => {
         if (data) {
-          setStyleList(data.resultList);
+          setStyleList(data);
         }
         else {
           setStyleList([]);
@@ -33,7 +33,7 @@ const StylePage = () => {
   return (
     <StyleMainLayout>
       <StyleTitle>선수 호칭</StyleTitle>
-      <MainSectionType2 text="" columnList={["칭호", "기준"]} parentIndex={1} data={styleList} pageType={`style`} />
+      <StyleSectionType text="" columnList={["칭호", "기준"]} parentIndex={1} data={styleList} key = {1} pageType={`style`} />
     </StyleMainLayout>
   );
 };

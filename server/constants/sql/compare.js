@@ -119,7 +119,7 @@ const searchHitterStyle = ({ pid }) => `
   ON
     HS.style_id = PSL.id
   WHERE
-    PS.player_id = "${pid}"
+    HS.player_id = "${pid}"
 `
 
 const searchBestCount = ({ pid }) => `

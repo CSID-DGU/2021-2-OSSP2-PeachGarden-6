@@ -4,17 +4,26 @@ import { colors } from "../../constants/colors";
 
 const ProfileModal = ({ data }) => {
   const { playerInfo, bestInfo, worstInfo, statInfo, styleInfo } = data;
-  const { pname, birth, shortName } = playerInfo;
+  const { pname, birth, shortName} = playerInfo;
+  let playerPosRender = 'P';
+  if ('ops' in statInfo){
+    const { playerPos } = playerInfo;
+    playerPosRender = playerPos;
+  }
+  
+  const styles = Object.values(styleInfo);
+  
   return (
+    console.log(statInfo),
     <MainDiv>
       <SideCardDiv />
       <SideMainDiv>
         <p>{pname}</p>
         <div>
           <p>생년월일: {birth}</p>
-          <p>포지션: {}</p>
-          <p>소속: </p>
-          <p>칭호: </p>
+          <p>포지션: {playerPosRender}</p>
+          <p>소속: {shortName}</p>
+          <p>칭호: {}</p>
           <p>Best: {bestInfo.count} | Worst: {worstInfo.count}</p>
         </div>
       </SideMainDiv>

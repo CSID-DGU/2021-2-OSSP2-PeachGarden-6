@@ -27,64 +27,73 @@ router.get(urlSet.compare, async (req, res, next) => {
   let CompareResult3 = null;
   let CompareResult4 = null;
 
-  if (pid / 10000 === 1) {
-    CompareResult0 = await db.sqlSelect(
-      searchHitterInfo({
-        pid: pid ? pid : null,
-      })
-    );
+  try {
+    if (pid / 10000 < 2) {
+      CompareResult0 = await db.sqlSelect(
+        searchHitterInfo({
+          pid: pid ? pid : null,
+        })
+      );
 
-    CompareResult1 = await db.sqlSelect(
-      searchAllHitStat({
-        pid: pid ? pid : null,
-      })
-    );
+      CompareResult1 = await db.sqlSelect(
+        searchAllHitStat({
+          pid: pid ? pid : null,
+        })
+      );
+  
+      CompareResult2 = await db.sqlSelect(
+        searchHitterStyle({
+          pid: pid ? pid : null,
+        })
+      );
+      console.log(CompareResult2);
+    } else {
+      CompareResult0 = await db.sqlSelect(
+        searchPitcherInfo({
+          pid: pid ? pid : null,
+        })
+      );
+  
+      CompareResult1 = await db.sqlSelect(
+        searchAllPitStat({
+          pid: pid ? pid : null,
+        })
+      );
 
-    CompareResult2 = await db.sqlSelect(
-      searchHitterStyle({
+      CompareResult2 = await db.sqlSelect(
+        searchPitcherStyle({
+          pid: pid ? pid : null,
+        })
+      );
+    }
+    
+    CompareResult3 = await db.sqlSelect(
+      searchBestCount({
         pid: pid ? pid : null,
       })
     );
-  } else {
-    CompareResult0 = await db.sqlSelect(
-      searchPitcherInfo({
+  
+    CompareResult4 = await db.sqlSelect(
+      searchWorstCount({
         pid: pid ? pid : null,
       })
     );
-
-    CompareResult1 = await db.sqlSelect(
-      searchAllPitStat({
-        pid: pid ? pid : null,
-      })
-    );
-
-    CompareResult2 = await db.sqlSelect(
-      searchPitcherStyle({
-        pid: pid ? pid : null,
-      })
-    );
+  
+    data.data = {
+      playerInfo: CompareResult0[0],
+      statInfo: CompareResult1[0],
+      styleInfo: CompareResult2,
+      bestInfo: CompareResult3[0],
+      worstInfo: CompareResult4[0],
+    };
+    return res.status(200).send(data);
+  } catch (error) {
+    data.error = 1;
+    data.message = error;
+    console.log(error);
+    return res.status(200).send(data);
   }
-
-  CompareResult3 = await db.sqlSelect(
-    searchBestCount({
-      pid: pid ? pid : null,
-    })
-  );
-
-  CompareResult4 = await db.sqlSelect(
-    searchWorstCount({
-      pid: pid ? pid : null,
-    })
-  );
-
-  data.data = {
-    playerInfo: CompareResult0[0],
-    statInfo: CompareResult1[0],
-    styleInfo: CompareResult2[0],
-    bestInfo: CompareResult3[0],
-    worstInfo: CompareResult4[0],
-  };
-  return res.status(200).send(data);
+  
 });
 
 module.exports = router;

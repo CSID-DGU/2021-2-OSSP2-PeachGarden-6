@@ -36,6 +36,7 @@ const ComparePage = () => {
             console.error(e);
           });
       }
+      console.log(result);
       setPlayerInfoList(result);
     }
   }, []);
@@ -43,7 +44,7 @@ const ComparePage = () => {
   const handleClick = useCallback(() => {
     setCurScreen(!curScreen);
   }, [curScreen]);
-
+  
   return (
     <CompareDiv>
       {playerInfoList.length === 2 && (
