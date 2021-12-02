@@ -7,6 +7,7 @@ const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const searchRouter = require('./routes/search');
+const teamRouter = require('./routes/team');
 const styleRouter = require('./routes/style');
 const compareRouter = require('./routes/compare');
 
@@ -26,6 +27,7 @@ app.prepare()
 
   server.use('/', indexRouter);
   server.use('/', searchRouter);
+  server.use('/',teamRouter);
   server.use('/', styleRouter);
   server.use('/', compareRouter);
 

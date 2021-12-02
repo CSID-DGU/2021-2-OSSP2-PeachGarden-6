@@ -1,13 +1,17 @@
-const searchOpRate = ({tid}) => `
+const searchOpRate = () => `
   SELECT 
-    *
+    OP.DOOSAN
+    , OP.SAMSUNG
+    , OP.NC
+    , OP.KIWOOM
+    , OP.SSG
+    , OP.HANWHA
+    , OP.LG
+    , OP.LOTTE
+    , OP.KIA
+    , OP.KT
   FROM 
-    TEAM_OP_RATE AS OP
-  JOIN
-    TEAMS AS T
-  ON
-    OP.TEAM_ID = T.TID;
-  WHERE OP.TEAM_ID = ${tid};
+    TEAM_OP_RATE AS OP;
 `
 
 const searchTeamColor = ({tid}) => ` 

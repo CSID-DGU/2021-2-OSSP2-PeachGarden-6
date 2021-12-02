@@ -15,6 +15,7 @@ const urlSet = {
   searchPlayer: `${API_URL_SEARCH}`,
   style: `${API_URL_STYLE}`,
   team: `${API_URL_TEAM}`,
+  color: `${API_URL_TEAM}/color`,
   compare: `${API_URL_COMPARE}`,
 }
 
