@@ -11,13 +11,13 @@ const MainSectionType1 = ({text}) => {
 
 export const MainSectionDiv = styled.div`
   width: 45%;
-  height: 600px;
-  background-color: ${colors.mainFaded};
+  height: 650px;
+  background-color: ${colors.white};
 `;
 
 export const MainSectionDiv2 = styled.div`
-  width: 100%;
-  height: 600px;
+  width: 45%;
+  height: 650px;
   background-color: ${colors.mainFaded};
 `;
 

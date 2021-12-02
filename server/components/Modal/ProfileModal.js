@@ -1,6 +1,7 @@
 import { memo } from "react";
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
+import { convertHitterStat, convertPitcherStat } from "../../utils/ConvertStatInfo";
 
 const ProfileModal = ({ data }) => {
   const { playerInfo, bestInfo, worstInfo, statInfo, styleInfo } = data;
@@ -9,6 +10,10 @@ const ProfileModal = ({ data }) => {
   if ('ops' in statInfo){
     const { playerPos } = playerInfo;
     playerPosRender = playerPos;
+    convertHitterStat(statInfo);
+  }
+  else{
+    convertPitcherStat(statInfo);
   }
   
   const styles = Object.values(styleInfo);

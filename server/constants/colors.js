@@ -1,6 +1,6 @@
 const colors = {
   main: "#df9977",
-  mainFaded: "#a3c2db",
+  mainFaded: "#c8896b",
   black: "#000000",
   white: "#FFFFFF",
   gray: "#AAAAAA",

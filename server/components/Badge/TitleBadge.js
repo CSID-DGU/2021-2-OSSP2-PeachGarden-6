@@ -11,11 +11,11 @@ const TitleBadge = ({text}) => {
 }
 
 const TitleBadgeDiv = styled.div`
-  width: 200px;
+  width: 100px;
   text-align: center;
   padding: 10px 0;
   font-size: 14px;
-  color: ${colors.black};
+  color: ${colors.white};
   background-color: ${colors.main};
 `;
 export default memo(TitleBadge);

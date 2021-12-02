@@ -1,0 +1,54 @@
+export const convertHitterStat = (statInfo) => {
+  delete Object.assign(statInfo, {['타수']: statInfo['ab'] })['ab'];
+  delete Object.assign(statInfo, {['볼넷']: statInfo['bb'] })['bb'];
+  delete Object.assign(statInfo, {['도실']: statInfo['cs'] })['cs'];
+  delete Object.assign(statInfo, {['2타']: statInfo['doubles'] })['doubles'];
+  delete Object.assign(statInfo, {['병살']: statInfo['gidp'] })['gidp'];
+  delete Object.assign(statInfo, {['사구']: statInfo['hbp'] })['hbp'];
+  delete Object.assign(statInfo, {['타율']: statInfo['hitAvg'] })['hitAvg'];
+  delete Object.assign(statInfo, {['안타']: statInfo['hits'] })['hits'];
+  delete Object.assign(statInfo, {['홈런']: statInfo['hr'] })['hr'];
+  delete Object.assign(statInfo, {['출루']: statInfo['obp'] })['obp'];
+  delete Object.assign(statInfo, {['OPS']: statInfo['ops'] })['ops'];
+  delete Object.assign(statInfo, {['타석']: statInfo['pa'] })['pa'];
+  delete Object.assign(statInfo, {['G']: statInfo['playerGames'] })['playerGames'];
+  delete Object.assign(statInfo, {['득점']: statInfo['r'] })['r'];
+  delete Object.assign(statInfo, {['타점']: statInfo['rbi'] })['rbi'];
+  delete Object.assign(statInfo, {['도루']: statInfo['sb'] })['sb'];
+  delete Object.assign(statInfo, {['희타']: statInfo['sh'] })['sh'];
+  delete Object.assign(statInfo, {['장타']: statInfo['slg'] })['slg'];
+  delete Object.assign(statInfo, {['삼진']: statInfo['so'] })['so'];
+  delete Object.assign(statInfo, {['3타']: statInfo['triples'] })['triples'];
+  delete Object.assign(statInfo, {['WAR']: statInfo['war'] })['war'];
+  delete Object.assign(statInfo, {['WRC+']: statInfo['wrcPlus'] })['wrcPlus'];
+};
+
+export const convertPitcherStat = (statInfo) => {
+  delete Object.assign(statInfo, {['볼넷']: statInfo['bb'] })['bb'];
+  delete Object.assign(statInfo, {['보크']: statInfo['bk'] })['bk'];
+  delete Object.assign(statInfo, {['완투']: statInfo['cg'] })['cg'];
+  delete Object.assign(statInfo, {['피2타']: statInfo['doubles'] })['doubles'];
+  delete Object.assign(statInfo, {['실책']: statInfo['er'] })['er'];
+  delete Object.assign(statInfo, {['ERA']: statInfo['era'] })['era'];
+  delete Object.assign(statInfo, {['ERA+']: statInfo['eraPlus'] })['eraPlus'];
+  delete Object.assign(statInfo, {['FIP']: statInfo['fip'] })['fip'];
+  delete Object.assign(statInfo, {['FIP+']: statInfo['fipPlus'] })['fipPlus'];
+  delete Object.assign(statInfo, {['선발']: statInfo['gs'] })['gs'];
+  delete Object.assign(statInfo, {['사구']: statInfo['hbp'] })['hbp'];
+  delete Object.assign(statInfo, {['피안타']: statInfo['hits'] })['hits'];
+  delete Object.assign(statInfo, {['홀드']: statInfo['hld'] })['hld'];
+  delete Object.assign(statInfo, {['피홈런']: statInfo['hr'] })['hr'];
+  delete Object.assign(statInfo, {['고의사구']: statInfo['ibb'] })['ibb'];
+  delete Object.assign(statInfo, {['이닝']: statInfo['ip'] })['ip'];
+  delete Object.assign(statInfo, {['패']: statInfo['loses'] })['loses'];
+  delete Object.assign(statInfo, {['G']: statInfo['playerGames'] })['playerGames'];
+  delete Object.assign(statInfo, {['실점']: statInfo['r'] })['r'];
+  delete Object.assign(statInfo, {['완봉']: statInfo['sho'] })['sho'];
+  delete Object.assign(statInfo, {['세이브']: statInfo['sv'] })['sv'];
+  delete Object.assign(statInfo, {['피3타']: statInfo['triples'] })['triples'];
+  delete Object.assign(statInfo, {['WAR']: statInfo['war'] })['war'];
+  delete Object.assign(statInfo, {['WHIP']: statInfo['whip'] })['whip'];
+  delete Object.assign(statInfo, {['승']: statInfo['wins'] })['wins'];
+  delete Object.assign(statInfo, {['폭투']: statInfo['wp'] })['wp'];
+  delete Object.assign(statInfo, {['탈삼진']: statInfo['so'] })['so'];
+}

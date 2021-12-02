@@ -46,7 +46,6 @@ router.get(urlSet.compare, async (req, res, next) => {
           pid: pid ? pid : null,
         })
       );
-      console.log(CompareResult2);
     } else {
       CompareResult0 = await db.sqlSelect(
         searchPitcherInfo({

@@ -13,8 +13,10 @@ const BasicTable = ({ columnList, parentIndex, data }) => {
 const BasicTableTable = styled.table`
   width: 100%;
   height: 400px;
-  margin-top: 20px;
-  background-color: ${colors.main};
+  margin-top: 10px;
+  text-align: center;
+  border-collapse: collapse;
+  background-color: ${colors.white};
 `;
 
 const BasicTableColumn = ({ columnList, parentIndex }) => {
@@ -48,6 +50,7 @@ const BasicTableBody = ({ data }) => {
 
 const BasicTableHead = styled.thead`
   width: 100%;
+  background-color: ${colors.main};
 `;
 const BasicTableBodyBody = styled.tbody`
   width: 100%;

@@ -14,7 +14,8 @@ const StyleTableTable = styled.table`
   width: 100%;
   height: 400px;
   margin-top: 20px;
-  background-color: ${colors.main};
+  border-collapse: collapse;
+  background-color: ${colors.white};
 `;
 
 const StyleTableColumn = ({ columnList, parentIndex }) => {
@@ -46,6 +47,9 @@ const StyleTableBody = ({ data }) => {
 
 const StyleTableHead = styled.thead`
   width: 100%;
+  background-color: ${colors.main};
+  color: ${colors.white};
+  border : solid 2px;
 `;
 const StyleTableBodyBody = styled.tbody`
   width: 100%;
@@ -54,14 +58,14 @@ const StyleTableBodyBody = styled.tbody`
 const StyleTableRow = styled.tr``;
 
 const StyleTableTitle = styled.td`
-  width: 100px;
+  width: 30% auto;
   height: 40px;
   border: 2px solid ${colors.black};
   text-align: center;
 `;
 
 const StyleTableData = styled.td`
-  width: 300px;
+  width: 70% auto;
   height: 40px;
   border: 2px solid ${colors.black};
   text-align: center;

@@ -14,7 +14,7 @@ const StyleSection = ({ columnList, parentIndex, data, pageType }) => {
 export const StyleSectionDiv = styled.div`
   width: 100%;
   height: 600px;
-  background-color: ${colors.mainFaded};
+  background-color: ${colors.white};
 `;
 
 export default StyleSection;
