@@ -4,6 +4,7 @@ const API_URL_MAIN = `${apiUrl}`;
 const API_URL_SEARCH = `${apiUrl}/search`;
 const API_URL_RANK = `${apiUrl}/rank`;
 const API_URL_STYLE = `${apiUrl}/style`;
+const API_URL_TEAM = `${apiUrl}/team`;
 const API_URL_COMPARE = `${apiUrl}/compare`;
 
 const urlSet = {
@@ -13,6 +14,7 @@ const urlSet = {
   waa: `${API_URL_RANK}/waa`,
   searchPlayer: `${API_URL_SEARCH}`,
   style: `${API_URL_STYLE}`,
+  team: `${API_URL_TEAM}`,
   compare: `${API_URL_COMPARE}`,
 }
 
