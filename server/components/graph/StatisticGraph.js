@@ -1,14 +1,41 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 import { valueExtractor } from "../../utils/functions";
 import TextBadge from "../Badge/TextBadge";
 import BarGraph from "./BarGraph";
 
-const StatisticGraph = ({ data }) => {
-  const statInfoList = valueExtractor({ data: data, key: "statInfo" });
-  const nameList = [data[0].playerInfo.pname, data[1].playerInfo.pname];
-  const dummyCounter = Object.keys(statInfoList[0]);
+const StatisticGraph = ({ data, type }) => {
+  const [statInfoList, setStatInfoList] = useState([]);
+  const [nameList, setNameList] = useState([]);
+  const [dummyCounter, setDummyCounter] = useState([]);
+
+  useMemo(() => {
+    if (data) {
+      switch (type) {
+        case "compare":
+          setStatInfoList(valueExtractor({ data: data, key: "statInfo" }));
+          setNameList([data[0].playerInfo.pname, data[1].playerInfo.pname]);
+          break;
+        case "single":
+          setStatInfoList(data.statInfo);
+          setNameList([data.playerInfo.pname]);
+          break;
+        default:
+          break;
+      }
+    }
+  }, [data, type]);
+
+  useMemo(() => {
+    if (statInfoList.length !== 0) {
+      if (type === "compare") {
+        setDummyCounter(Object.keys(statInfoList[0]));
+      } else {
+        setDummyCounter(Object.keys(statInfoList));
+      }
+    }
+  }, [statInfoList, type]);
 
   return (
     (
@@ -16,7 +43,7 @@ const StatisticGraph = ({ data }) => {
         {dummyCounter.map((item, index) => {
           if (index % 2 === 1) {
             return (
-              <RowContainer>
+              <RowContainer style={{height: type==='single'&&80}}>
                 <div>
                   <div>
                     <TextBadge
@@ -27,7 +54,7 @@ const StatisticGraph = ({ data }) => {
                   </div>
                   <BarGraph
                     keys={nameList}
-                    data={[
+                    data={type==='compare'?[
                       {
                         country: dummyCounter[index],
                         [nameList[0]]: statInfoList[0][dummyCounter[index]],
@@ -35,7 +62,13 @@ const StatisticGraph = ({ data }) => {
                         [nameList[1]]: statInfoList[1][dummyCounter[index]],
                         [nameList[1] + "Color"]: colors.orange,
                       },
-                    ]}
+                    ]:type==='single'?[
+                      {
+                        country: dummyCounter[index],
+                        [nameList]: statInfoList[dummyCounter[index]],
+                        [nameList + "Color"]: colors.blue,
+                      },
+                    ]:null}
                   />
                 </div>
                 <div>
@@ -48,7 +81,7 @@ const StatisticGraph = ({ data }) => {
                   </div>
                   <BarGraph
                     keys={nameList}
-                    data={[
+                    data={type==='compare'?[
                       {
                         country: dummyCounter[index + 1],
                         [nameList[0]]: statInfoList[0][dummyCounter[index + 1]],
@@ -56,7 +89,13 @@ const StatisticGraph = ({ data }) => {
                         [nameList[1]]: statInfoList[1][dummyCounter[index + 1]],
                         [nameList[1] + "Color"]: colors.orange,
                       },
-                    ]}
+                    ]:type==='single'?[
+                      {
+                        country: dummyCounter[index + 1],
+                        [nameList]: statInfoList[dummyCounter[index + 1]],
+                        [nameList + "Color"]: colors.blue,
+                      },
+                    ]:null}
                   />
                 </div>
               </RowContainer>
@@ -70,16 +109,15 @@ const StatisticGraph = ({ data }) => {
 
 const RowContainer = styled.div`
   width: 100%;
-  height: 150px;
+  height: 100px;
   display: flex;
   border-bottom: 1px solid ${colors.gray};
   & > div {
     display: flex;
     width: 50%;
     & > :first-child {
-      width: 20%;
+      width: 40%;
       align-self: center;
-      margin: 0 20px;
     }
     & > :last-child {
       border-left: 1px solid ${colors.gray};

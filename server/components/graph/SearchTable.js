@@ -80,6 +80,10 @@ const BasicTableBody = ({ data }) => {
     }
   };
 
+  const openPlayerStat = useCallback((pid) => {
+    root.open(`/single?pid=${pid}`, `comparePopup`, `toolbar=no, menubar=no, location=no, status=no, resizable=no, fullscreen=no, width=1000, height=900`, false);
+  }, []);
+
   return (
     <BasicTableBodyBody>
       {data &&
@@ -95,7 +99,7 @@ const BasicTableBody = ({ data }) => {
                   }).includes(pid)}
                 />
               </BasicTableData>
-              <BasicTableData>{pname}</BasicTableData>
+              <BasicTableData><TextButton onClick={() => openPlayerStat(pid)}>{pname}</TextButton></BasicTableData>
               <BasicTableData>{war}</BasicTableData>
               <BasicTableData>{hitAvg}</BasicTableData>
               <BasicTableData>{hr}</BasicTableData>
@@ -127,6 +131,14 @@ const BasicTableData = styled.td`
   border-left: none;
   border-right: none;
   text-align: center;
+`;
+
+const TextButton = styled.button`
+  background-color: unset;
+  border: unset;
+  color: ${colors.black};
+  font-weight: bold;
+  font-size: 15px;
 `;
 
 export default HitterSearchTable;

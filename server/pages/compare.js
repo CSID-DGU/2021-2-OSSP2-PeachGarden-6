@@ -49,9 +49,9 @@ const ComparePage = () => {
     playerInfoList.length === 2 && (
       <CompareDiv>
         <CompareTopDiv>
-          <ProfileModal data={playerInfoList[0]} />
+          <ProfileModal side={"L"} data={playerInfoList[0]} />
           <h1>VS</h1>
-          <ProfileModal data={playerInfoList[1]} />
+          <ProfileModal side={"R"} data={playerInfoList[1]} />
         </CompareTopDiv>
         )
         {curScreen ? (
@@ -60,7 +60,7 @@ const ComparePage = () => {
           </CompareContentDiv>
         ) : (
           <CompareContentGraphDiv>
-            <StatisticGraph data={playerInfoList} />
+            <StatisticGraph type={`compare`} data={playerInfoList} />
           </CompareContentGraphDiv>
         )}
         <CompareBottomDiv>
@@ -84,13 +84,12 @@ const ComparePage = () => {
   );
 };
 
-const CompareDiv = styled.div`
+export const CompareDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   position: relative;
   width: 98%;
-  height: 100vh;
   margin: 0 auto;
   color: ${colors.white};
   & > button {
@@ -98,12 +97,12 @@ const CompareDiv = styled.div`
   }
 `;
 
-const CompareTopDiv = styled.div`
+export const CompareTopDiv = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 300px;
+  height: 200px;
   color: ${colors.red};
 `;
 
@@ -115,12 +114,13 @@ const CompareContentDiv = styled.div`
   border: 1px solid ${colors.gray};
 `;
 
-const CompareContentGraphDiv = styled.div`
+export const CompareContentGraphDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   height: calc(100vh - 400px);
   overflow-y: scroll;
+  overflow-x: hidden;
   border: 1px solid ${colors.gray};
 `;
 
@@ -133,6 +133,7 @@ const CompareBottomDiv = styled.div`
   color: ${colors.red};
   & > :nth-child(n) {
     margin-left: 20px;
+    margin-right: 0;
   }
 `;
 

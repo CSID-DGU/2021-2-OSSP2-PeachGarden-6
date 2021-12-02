@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { colors } from "../../constants/colors";
 import { convertHitterStat, convertPitcherStat } from "../../utils/ConvertStatInfo";
 
-const ProfileModal = ({ data }) => {
+const ProfileModal = ({ data, side }) => {
   const { playerInfo, bestInfo, worstInfo, statInfo, styleInfo } = data;
   const { pname, birth, shortName} = playerInfo;
   let playerPosRender = 'P';
@@ -20,9 +20,9 @@ const ProfileModal = ({ data }) => {
   
   return (
     <MainDiv>
-      <SideCardDiv />
+      <SideCardDiv style={{backgroundColor: side==='R'?colors.orange:colors.blue}}/>
       <SideMainDiv>
-        <p>{pname}</p>
+        <p style={{color: side==='R'?colors.orange:colors.blue}}>{pname}</p>
         <div>
           <p>생년월일: {birth}</p>
           <p>포지션: {playerPosRender}</p>
@@ -43,7 +43,6 @@ const MainDiv = styled.div`
 
 const SideCardDiv = styled.div`
   width: 50px;
-  background-color: ${colors.mainFaded};
 `;
 
 const SideMainDiv = styled.div`

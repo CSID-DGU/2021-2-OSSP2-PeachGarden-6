@@ -15,7 +15,7 @@ const TextBadgeP = styled.p`
   border-radius: 5px;
   text-align: center;
   width: 45px;
-  margin: 0;
+  margin: 0 auto;
 `;
 
 export default memo(TextBadge);
