@@ -105,8 +105,8 @@ const MainPageDiv = styled.div`
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  width: 120%;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export default Index;

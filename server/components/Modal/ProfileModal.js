@@ -19,7 +19,6 @@ const ProfileModal = ({ data }) => {
   const styles = Object.values(styleInfo);
   
   return (
-    console.log(statInfo),
     <MainDiv>
       <SideCardDiv />
       <SideMainDiv>

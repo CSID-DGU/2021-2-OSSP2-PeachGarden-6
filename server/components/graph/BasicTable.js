@@ -17,6 +17,7 @@ const BasicTableTable = styled.table`
   text-align: center;
   border-collapse: collapse;
   background-color: ${colors.white};
+  font-size: 12px;
 `;
 
 const BasicTableColumn = ({ columnList, parentIndex }) => {

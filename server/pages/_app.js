@@ -5,6 +5,7 @@ import { RecoilRoot } from "recoil";
 import styled from "styled-components";
 import { localStorage } from "window-or-global";
 import Header from "../components/Header";
+import { colors } from "../constants/colors";
 
 const Root = (props) => {
   const { store, pageProps, Component, router } = props;
@@ -22,16 +23,18 @@ const Root = (props) => {
               <title>Static Website</title>
             </Head>
             <Header />
-            <MainArea>
-              <Component {...pageProps} />
-            </MainArea>
+            <MainSection>
+              <MainArea>
+                <Component {...pageProps} />
+              </MainArea>
+            </MainSection>
           </>
         ) : (
           <>
-          <Head>
-            <title>비교 결과</title>
-          </Head>
-          <Component {...pageProps} />
+            <Head>
+              <title>비교 결과</title>
+            </Head>
+            <Component {...pageProps} />
           </>
         )}
         {/* <footer>Footer</footer> */}
@@ -57,10 +60,28 @@ Root.getInitialProps = async (context) => {
   };
 };
 
+const MainSection = styled.main`
+  width: 100%;
+  height: calc(100vh - 102px);
+  margin-top: 102px;
+  overflow-y: scroll;
+  & ::-webkit-scrollbar {
+    width: 1px;
+  }
+  & ::-webkit-scrollbar-thumb {
+    width: 4px;
+    background-color: ${colors.black};
+  }
+  & ::-webkit-scrollbar-track {
+    width: 1px;
+  }
+`;
+
 const MainArea = styled.div`
   position: relative;
-  width: 800px;
-  padding: 102px calc(50% - 400px);
+  width: 900px;
+  margin: 0 auto;
+  padding: 20px 0;
 `;
 
 export default Root;
