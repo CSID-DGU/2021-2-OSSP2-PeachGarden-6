@@ -11,7 +11,23 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
+<<<<<<< HEAD
     "/compare": [
+=======
+    "/team": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/style": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/search": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/index": [
+>>>>>>> parent of 1878a08 ([add] compare example pic)
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
