@@ -14,12 +14,20 @@ const StatisticGraph = ({ data, type }) => {
     if (data) {
       switch (type) {
         case "compare":
-          setStatInfoList(valueExtractor({ data: data, key: "statInfo" }));
-          setNameList([data[0].playerInfo.pname, data[1].playerInfo.pname]);
+          setStatInfoList([
+            data.p1Info.statInfo,
+            data.p2Info.statInfo,
+            data.avgInfo.statInfo,
+          ]);
+          setNameList([
+            data.p1Info.playerInfo.pname,
+            data.p2Info.playerInfo.pname,
+            "평균",
+          ]);
           break;
         case "single":
-          setStatInfoList(data.statInfo);
-          setNameList([data.playerInfo.pname]);
+          setStatInfoList([data.p1Info.statInfo, data.avgInfo.statInfo]);
+          setNameList([data.p1Info.playerInfo.pname, "평균"]);
           break;
         default:
           break;
@@ -29,81 +37,65 @@ const StatisticGraph = ({ data, type }) => {
 
   useMemo(() => {
     if (statInfoList.length !== 0) {
-      if (type === "compare") {
-        setDummyCounter(Object.keys(statInfoList[0]));
-      } else {
-        setDummyCounter(Object.keys(statInfoList));
-      }
+      setDummyCounter(Object.keys(statInfoList[0]));
     }
   }, [statInfoList, type]);
 
   return (
-    (
-      <>
-        {dummyCounter.map((item, index) => {
-          if (index % 2 === 1) {
-            return (
-              <RowContainer style={{height: type==='single'&&80}}>
+    <>
+      {dummyCounter.map((item, index) => {
+        if (index % 4 === 1) {
+          return (
+            <RowContainer style={{ height: type === "single" && 80 }}>
+              {[0, 1, 2, 3].map((item, index2) => (
                 <div>
                   <div>
                     <TextBadge
-                      text={dummyCounter[index]}
+                      text={dummyCounter[index + item]}
                       color={colors.white}
                       backgroundColor={colors.gray}
                     />
                   </div>
                   <BarGraph
                     keys={nameList}
-                    data={type==='compare'?[
-                      {
-                        country: dummyCounter[index],
-                        [nameList[0]]: statInfoList[0][dummyCounter[index]],
-                        [nameList[0] + "Color"]: colors.blue,
-                        [nameList[1]]: statInfoList[1][dummyCounter[index]],
-                        [nameList[1] + "Color"]: colors.orange,
-                      },
-                    ]:type==='single'?[
-                      {
-                        country: dummyCounter[index],
-                        [nameList]: statInfoList[dummyCounter[index]],
-                        [nameList + "Color"]: colors.blue,
-                      },
-                    ]:null}
+                    data={
+                      type === "compare"
+                        ? [
+                            {
+                              country: dummyCounter[index + item],
+                              [nameList[0]]:
+                                statInfoList[0][dummyCounter[index + item]],
+                              [nameList[0] + "Color"]: colors.blue,
+                              [nameList[1]]:
+                                statInfoList[1][dummyCounter[index + item]],
+                              [nameList[1] + "Color"]: colors.orange,
+                              [nameList[2]]:
+                                statInfoList[2][dummyCounter[index + item]],
+                              [nameList[2] + "Color"]: colors.orange,
+                            },
+                          ]
+                        : type === "single"
+                        ? [
+                            {
+                              country: dummyCounter[index + item],
+                              [nameList[0]]:
+                                statInfoList[0][dummyCounter[index + item]],
+                              [nameList[0] + "Color"]: colors.blue,
+                              [nameList[1]]:
+                                statInfoList[1][dummyCounter[index + item]],
+                              [nameList[1] + "Color"]: colors.orange,
+                            },
+                          ]
+                        : null
+                    }
                   />
                 </div>
-                <div>
-                  <div>
-                    <TextBadge
-                      text={dummyCounter[index + 1]}
-                      color={colors.white}
-                      backgroundColor={colors.gray}
-                    />
-                  </div>
-                  <BarGraph
-                    keys={nameList}
-                    data={type==='compare'?[
-                      {
-                        country: dummyCounter[index + 1],
-                        [nameList[0]]: statInfoList[0][dummyCounter[index + 1]],
-                        [nameList[0] + "Color"]: colors.blue,
-                        [nameList[1]]: statInfoList[1][dummyCounter[index + 1]],
-                        [nameList[1] + "Color"]: colors.orange,
-                      },
-                    ]:type==='single'?[
-                      {
-                        country: dummyCounter[index + 1],
-                        [nameList]: statInfoList[dummyCounter[index + 1]],
-                        [nameList + "Color"]: colors.blue,
-                      },
-                    ]:null}
-                  />
-                </div>
-              </RowContainer>
-            );
-          }
-        })}
-      </>
-    )
+              ))}
+            </RowContainer>
+          );
+        }
+      })}
+    </>
   );
 };
 

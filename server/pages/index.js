@@ -6,6 +6,7 @@ import MainSectionType1 from "../components/common/MainSectionType1";
 import MainSectionType2 from "../components/common/MainSectionType2";
 import { LEADERBOARD_DUMMY_DATA, MAIN_RANK_DUMMY_DATA, TEAM_WAA_DUMMY_DATA } from "../constants/dummy/mainpage";
 import { urlSet } from "../constants/urls";
+import { pythonExecutor } from "../utils/functions";
 
 // type:
 // 0: 걍 사진
@@ -64,6 +65,20 @@ const Index = () => {
         else {
           setTopThreeList([]);
         }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }, []);
+  useEffect(async () => {
+    await axios
+      .get(urlSet.scatter, {
+        params: {
+          coordinateList: [1, 2, 3, 4],
+        }
+      })
+      .then(({ data: { data } }) => {
+        console.log('결과값? ', data);
       })
       .catch((e) => {
         console.error(e);

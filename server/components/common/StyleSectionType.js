@@ -3,7 +3,7 @@ import StyleTable from "../graph/StyleTable";
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 
-const StyleSection = ({ columnList, parentIndex, data }) => {
+const StyleSection = ({ columnList, parentIndex, data, pageType }) => {
   return (
     <StyleSectionDiv>
       <StyleTable columnList={columnList} parentIndex={parentIndex} data={data} />

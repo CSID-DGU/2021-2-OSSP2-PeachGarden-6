@@ -11,12 +11,13 @@ import ButtonType1 from "../components/Button/ButtonType1";
 import StatisticGraph from "../components/graph/StatisticGraph";
 import StatisticTable from "../components/graph/StatisticTable";
 import TextBadge from "../components/Badge/TextBadge";
+import { valueExtractor } from "../utils/functions";
 
 const ComparePage = () => {
   const [selectedPlayer, setSelectedPlayer] =
     useRecoilState(selectedPlayerState);
 
-  const [playerInfoList, setPlayerInfoList] = useState([]);
+  const [playerInfoList, setPlayerInfoList] = useState(null);
   // curScreen:
   //  true: 표
   //  false: 그래프
@@ -26,18 +27,15 @@ const ComparePage = () => {
     if (selectedPlayer.length !== 2) {
       root.close();
     } else {
-      let result = [];
-      for await (const item of selectedPlayer) {
-        await axios
-          .get(urlSet.compare + `?a=a${item.id ? `&pid=${item.id}` : ``}`)
-          .then(({ data: { data } }) => {
-            result.push(data);
-          })
-          .catch((e) => {
-            console.error(e);
-          });
-      }
-      setPlayerInfoList(result);
+      const pidList = valueExtractor({ data: selectedPlayer, key: `pid` });
+      await axios
+        .get(urlSet.compare + `?a=a${item.id ? `&pidL=${pidList[0]}&pidR=${pidList[1]}` : ``}`)
+        .then(({ data: { data } }) => {
+          setPlayerInfoList(data);
+        })
+        .catch((e) => {
+          console.error(e);
+        });
     }
   }, []);
 
@@ -46,12 +44,12 @@ const ComparePage = () => {
   }, [curScreen]);
 
   return (
-    playerInfoList.length === 2 && (
+    playerInfoList && (
       <CompareDiv>
         <CompareTopDiv>
-          <ProfileModal side={"L"} data={playerInfoList[0]} />
+          <ProfileModal side={"L"} data={playerInfoList.p1Info} />
           <h1>VS</h1>
-          <ProfileModal side={"R"} data={playerInfoList[1]} />
+          <ProfileModal side={"R"} data={playerInfoList.p2Info} />
         </CompareTopDiv>
         )
         {curScreen ? (
@@ -65,12 +63,12 @@ const ComparePage = () => {
         )}
         <CompareBottomDiv>
           <TextBadge
-            text={playerInfoList[0].playerInfo.pname}
+            text={playerInfoList.p1Info.playerInfo.pname}
             backgroundColor={colors.blue}
             color={colors.white}
           />
           <TextBadge
-            text={playerInfoList[1].playerInfo.pname}
+            text={playerInfoList.p2Info.playerInfo.pname}
             backgroundColor={colors.orange}
             color={colors.white}
           />

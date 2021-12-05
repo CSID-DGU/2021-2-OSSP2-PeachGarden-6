@@ -14,7 +14,6 @@ const StylePage = () => {
       .get(urlSet.style)
       .then(({ data: { data } }) => {
         if (data) {
-          console.log(data);
           setStyleList(data);
         }
         else {

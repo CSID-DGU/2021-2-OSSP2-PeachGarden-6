@@ -6,7 +6,6 @@ import TitleBadge from "../Badge/TitleBadge";
 const MainSectionType1 = ({text}) => {
   return <MainSectionDiv>
     <TitleBadge text={text}/>
-    <img alt ="사진" src = "../../public/images/CompareExample.png"/>
   </MainSectionDiv>;
 };
 

@@ -17,7 +17,7 @@ const SinglePage = ({ pid }) => {
       root.close();
     } else {
       await axios
-        .get(urlSet.compare + `?pid=${pid}`)
+        .get(urlSet.compare + `?pidL=${pid}`)
         .then(({ data: { data } }) => {
           setPlayerInfo(data);
         })
@@ -31,7 +31,7 @@ const SinglePage = ({ pid }) => {
     playerInfo && (
       <CompareDiv>
         <CompareTopDiv>
-          <ProfileModal side={"A"} data={playerInfo} />
+          <ProfileModal side={"A"} data={playerInfo.p1Info} />
         </CompareTopDiv>
         )
         <CompareContentGraphDiv>
