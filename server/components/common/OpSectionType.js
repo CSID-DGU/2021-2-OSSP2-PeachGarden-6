@@ -1,4 +1,3 @@
-import TitleBadge from "../Badge/TitleBadge";
 import OpTable from "../graph/OpTable";
 import styled from "styled-components";
 import { colors } from "../../constants/colors";

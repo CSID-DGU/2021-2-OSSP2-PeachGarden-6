@@ -1,16 +1,19 @@
 import Layout from '../components/Layout';
+import axios from 'axios';
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import BasicTable from '../components/graph/BasicTable';
-import { TEAM_DUMMY_DATA } from '../constants/dummy/teampage';
+import OpSection from '../components/common/OpSectionType';
+import { urlSet } from '../constants/urls';
 
-const StylePage = () => {
+const Team = () => {
   const [teamList, setTeamList] = useState([]);
   useEffect(async () => {
     await axios
-      .get(urlSet.style)
+      .get(urlSet.team)
       .then(({ data: { data } }) => {
         if (data) {
-          setTeamList(data);
+          console.log(data.resultList);
+          setTeamList(data.resultList);
         }
         else {
           setTeamList([]);
@@ -21,22 +24,40 @@ const StylePage = () => {
       });
   }, []);
 
+  const [colorList, setcolorList] = useState([]);
+  useEffect(async () => {
+    await axios
+      .get(urlSet.color)
+      .then(({ data: { data } }) => {
+        if (data) {
+          //console.log(data);
+          setcolorList(data);
+        }
+        else {
+          setcolorList([]);
+        }
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }, []);
+  let nameList = ["VS", "두산", "삼성", "NC", "키움", "SSG", "한화", "LG", "롯데", "KIA", "KT"];
   return (
-    <MainLayout>
-        <TeamTitle>팀 기록</TeamTitle>
-        <BasicTable data={TEAM_DUMMY_DATA} />
-    </MainLayout>
+    <TeamMainLayout>
+      <TeamTitle>상대 승률</TeamTitle>
+      <OpSection text="" columnList={nameList} parentIndex={1} data={teamList} key={1} pageType={`style`} />
+    </TeamMainLayout>
   );
 };
 
 
 const TeamTitle = styled.p`
-  font-size: 20px;
-  font-weight: bold;
+font-size: 20px;
+font-weight: bold;
 `;
 
 const TeamMainLayout = styled.div`
-  width: 100%;
+width: 100%;
 `;
 
-export default TeamPage;
+export default Team;

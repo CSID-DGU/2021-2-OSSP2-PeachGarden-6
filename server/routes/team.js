@@ -44,7 +44,7 @@ router.get(urlSet.color, async (req, res) => {
     temp.map((item, index) => {
       let resultList = {
         title: '',
-        list: '',
+        list: [],
       }
       resultList.title = item.cname;
       resultList.list = item.script

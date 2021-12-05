@@ -60,6 +60,7 @@ const Index = () => {
       .get(urlSet.topThree)
       .then(({ data: { data } }) => {
         if (data) {
+          console.log(data);
           setTopThreeList(data.resultList);
         }
         else {

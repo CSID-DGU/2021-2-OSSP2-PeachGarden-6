@@ -39,7 +39,9 @@ const OpTableBody = ({ data }) => {
       {data.map(({ title, list }, index) => (
         <OpTableRow>
           <OpTableTitle>{title}</OpTableTitle>
-          <OpTableData>{list}</OpTableData>
+          {list.map((item, index) => (
+            <OpTableData>{item}</OpTableData>
+          ))}
         </OpTableRow>
       ))}
     </OpTableBodyBody>
