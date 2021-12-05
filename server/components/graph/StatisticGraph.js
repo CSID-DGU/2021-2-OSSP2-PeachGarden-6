@@ -42,8 +42,37 @@ const StatisticGraph = ({ data, type }) => {
   }, [statInfoList, type]);
 
   return (
-    console.log(statInfoList),
     <>
+      <RowContainerType2>
+        <div>
+          <div>
+            <TextBadge
+              text={`WAR`}
+              color={colors.white}
+              backgroundColor={colors.gray}
+            />
+          </div>
+          <img src="images/scatter.png" alt="" />
+        </div>
+        <div>
+          <div>
+            <TextBadge
+              text={`확률 분포도(미정)`}
+              color={colors.white}
+              backgroundColor={colors.gray}
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            <TextBadge
+              text={`확률 분포도(미정)`}
+              color={colors.white}
+              backgroundColor={colors.gray}
+            />
+          </div>
+        </div>
+      </RowContainerType2>
       {dummyCounter.map((item, index) => {
         if (index % 4 === 1) {
           return (
@@ -115,6 +144,29 @@ const RowContainer = styled.div`
     & > :last-child {
       border-left: 1px solid ${colors.gray};
       border-right: 1px solid ${colors.gray};
+    }
+  }
+`;
+
+const RowContainerType2 = styled.div`
+  width: 100%;
+  height: 300px;
+  display: flex;
+  border-bottom: 1px solid ${colors.gray};
+  & > div {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-right: 1px solid ${colors.gray};
+    & > :first-child {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      align-self: center;
+    }
+    & > img {
+      width: 100%;
+      height: 100%;
     }
   }
 `;

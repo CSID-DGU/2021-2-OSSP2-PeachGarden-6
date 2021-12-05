@@ -10,10 +10,11 @@ router.get(urlSet.scatter, async (req, res) => {
   // coordinateList: 전체
   // markerList: 찍을 방점 두개 내지 한개
   const { type, markerList } = req.query;
-  const coordinateList = [];
+  let coordinateList = [];
+  console.log('넘겨받은 값: ', req.query);
 
   try {
-    if (type==='타자') {
+    if (type) {
       coordinateList = await db.sqlSelect(selectHitterWarCoordinates());
     } else {
       coordinateList = await db.sqlSelect(selectPitcherWarCoordinates());

@@ -12,7 +12,10 @@ import StatisticGraph from "../components/graph/StatisticGraph";
 import StatisticTable from "../components/graph/StatisticTable";
 import TextBadge from "../components/Badge/TextBadge";
 import { valueExtractor } from "../utils/functions";
-import { convertHitterStat, convertPitcherStat } from "../utils/ConvertStatInfo";
+import {
+  convertHitterStat,
+  convertPitcherStat,
+} from "../utils/ConvertStatInfo";
 
 const ComparePage = () => {
   const [selectedPlayer, setSelectedPlayer] =
@@ -30,21 +33,33 @@ const ComparePage = () => {
     } else {
       const pidList = valueExtractor({ data: selectedPlayer, key: `id` });
       await axios
-        .get(urlSet.compare + `?a=a${pidList ? `&pidL=${pidList[0]}&pidR=${pidList[1]}` : ``}`)
+        .get(
+          urlSet.compare +
+            `?a=a${pidList ? `&pidL=${pidList[0]}&pidR=${pidList[1]}` : ``}`
+        )
         .then(({ data: { data } }) => {
-          if ('ops' in data.avgInfo.statInfo) {
+          if ("ops" in data.avgInfo.statInfo) {
             convertHitterStat(data.avgInfo.statInfo);
-          }
-          else{
+          } else {
             convertPitcherStat(data.avgInfo.statInfo);
           }
           setPlayerInfoList(data);
+          // 여기서 산점도 api 불러오기 + 좌표 세개 넘기기 (좌, 우, 평균치 순서대로)
+          axios.get(urlSet.scatter, {
+            params: {
+              type: "ops" in data.avgInfo.statInfo,
+              markerList: {
+                x: [data.p1Info.statInfo['G'], data.p2Info.statInfo['G'], data.avgInfo.statInfo['G']],
+                y: [data.p1Info.statInfo['WAR'], data.p2Info.statInfo['WAR'], data.avgInfo.statInfo['WAR']],
+              },
+            },
+          });
         })
         .catch((e) => {
           console.error(e);
         });
+        console.log(selectedPlayer);
     }
-    // 여기서 산점도 api 불러오기 + 좌표 두개 넘기기 (좌, 우 순서대로)
   }, []);
 
   const handleClick = useCallback(() => {
