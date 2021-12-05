@@ -78,7 +78,7 @@ const Index = () => {
         }
       })
       .then(({ data: { data } }) => {
-        console.log('결과값? ', data);
+        // console.log('결과값? ', data);
       })
       .catch((e) => {
         console.error(e);

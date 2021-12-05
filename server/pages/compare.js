@@ -12,6 +12,7 @@ import StatisticGraph from "../components/graph/StatisticGraph";
 import StatisticTable from "../components/graph/StatisticTable";
 import TextBadge from "../components/Badge/TextBadge";
 import { valueExtractor } from "../utils/functions";
+import { convertHitterStat, convertPitcherStat } from "../utils/ConvertStatInfo";
 
 const ComparePage = () => {
   const [selectedPlayer, setSelectedPlayer] =
@@ -27,10 +28,16 @@ const ComparePage = () => {
     if (selectedPlayer.length !== 2) {
       root.close();
     } else {
-      const pidList = valueExtractor({ data: selectedPlayer, key: `pid` });
+      const pidList = valueExtractor({ data: selectedPlayer, key: `id` });
       await axios
-        .get(urlSet.compare + `?a=a${item.id ? `&pidL=${pidList[0]}&pidR=${pidList[1]}` : ``}`)
+        .get(urlSet.compare + `?a=a${pidList ? `&pidL=${pidList[0]}&pidR=${pidList[1]}` : ``}`)
         .then(({ data: { data } }) => {
+          if ('ops' in data.avgInfo.statInfo) {
+            convertHitterStat(data.avgInfo.statInfo);
+          }
+          else{
+            convertPitcherStat(data.avgInfo.statInfo);
+          }
           setPlayerInfoList(data);
         })
         .catch((e) => {

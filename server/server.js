@@ -17,6 +17,7 @@ const handle = app.getRequestHandler();
 app.prepare()
 .then(() => {  
   const server = express();
+  server.use(express.static(path.join(__dirname, 'public')));
   
   server.get('/p/:id', (req, res) => {
     const actualPage = '/style';

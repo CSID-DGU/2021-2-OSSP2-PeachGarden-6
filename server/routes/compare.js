@@ -93,7 +93,7 @@ router.get(urlSet.compare, async (req, res, next) => {
         })
       );
       result.avgInfo = {
-        statInfo: avgStatInfo,
+        statInfo: avgStatInfo[0],
       };
       if (pid === pidL) {
         result.p1Info = {
@@ -113,8 +113,8 @@ router.get(urlSet.compare, async (req, res, next) => {
         };
       }
     }
-  
-    data.data = result
+
+    data.data = result;
     return res.status(200).send(data);
   } catch (error) {
     data.error = 1;

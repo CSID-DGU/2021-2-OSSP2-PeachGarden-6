@@ -13,7 +13,7 @@ def test1(coordinateList):
 
     plt.scatter(x, y, marker='.', alpha=0.5)
     plt.plot(x, m*x + b)
-    plt.savefig('constants/images/scatter.png', bbox_inches='tight')
+    plt.savefig('public/images/scatter.png', bbox_inches='tight')
 
 if __name__ == '__main__':
     test1(sys.argv[1])

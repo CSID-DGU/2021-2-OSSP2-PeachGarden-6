@@ -42,6 +42,7 @@ const StatisticGraph = ({ data, type }) => {
   }, [statInfoList, type]);
 
   return (
+    console.log(statInfoList),
     <>
       {dummyCounter.map((item, index) => {
         if (index % 4 === 1) {
@@ -113,10 +114,8 @@ const RowContainer = styled.div`
     }
     & > :last-child {
       border-left: 1px solid ${colors.gray};
+      border-right: 1px solid ${colors.gray};
     }
-  }
-  & > :first-child {
-    border-right: 1px solid ${colors.gray};
   }
 `;
 
