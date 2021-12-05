@@ -9,10 +9,10 @@ router.get(urlSet.team, async (req, res) => {
   try {
     let actualReturn = [];
     let count = 0;
-    const temp = await db.sqlSelect(searchOpRate());
+    const op = await db.sqlSelect(searchOpRate());
     let titleList = ["두산", "삼성", "NC", "키움", "SSG", "한화", "LG", "롯데", "KIA", "KT"];
     
-    temp.map((item, index) => {
+    op.map((item, index) => {
       let resultList = {
         title: '',
         list: [],

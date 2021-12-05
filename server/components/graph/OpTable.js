@@ -40,7 +40,7 @@ const OpTableBody = ({ data }) => {
         <OpTableRow>
           <OpTableTitle>{title}</OpTableTitle>
           {list.map((item, index) => (
-            <OpTableData>{item}</OpTableData>
+            <OpTableData style = {{color: item > 0.6? "red": item > 0.4? "black" : item === 0? "black": "blue"}}>{item}</OpTableData>
           ))}
         </OpTableRow>
       ))}
