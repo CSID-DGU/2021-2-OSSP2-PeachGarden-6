@@ -44,6 +44,7 @@ const ComparePage = () => {
           console.error(e);
         });
     }
+    // 여기서 산점도 api 불러오기 + 좌표 두개 넘기기 (좌, 우 순서대로)
   }, []);
 
   const handleClick = useCallback(() => {

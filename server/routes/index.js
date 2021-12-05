@@ -6,8 +6,6 @@ const {
 } = require("../constants/sql");
 const { topThreeProps } = require("../constants/topThree");
 const { urlSet } = require("../constants/urls");
-const { PythonShell } = require("python-shell");
-const fs = require("fs");
 const router = express.Router();
 const db = require("./../db");
 
@@ -130,28 +128,6 @@ router.get(urlSet.waa, async (req, res) => {
   } catch (error) {
     result.error = 1;
     result.message = error;
-    return res.status(200).send(result);
-  }
-});
-
-router.get(urlSet.scatter, async (req, res) => {
-  let result = db.responseData();
-  const { coordinateList } = req.query;
-
-  const args = JSON.stringify(coordinateList);
-  try {
-    PythonShell.run(
-      "routes/scatter.py",
-      { args: args },
-      function (err, results) {
-        if (err) throw err;
-      }
-    );
-
-    return res.status(200).send(result);
-  } catch (error) {
-    console.log(error);
-    result.error = 1;
     return res.status(200).send(result);
   }
 });
