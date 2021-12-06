@@ -27,15 +27,15 @@ let objectToCamelCase = (obj) => {
 const sqlSelect = async (sqlText) => {
   try {
     let connection = await pool.getConnection();
-    let result = await connection.query(sqlText);
-    connection.release();
-    result = result.map(objectToCamelCase);
-    return result;
+  let result = await connection.query(sqlText);
+  connection.release();
+  result = result.map(objectToCamelCase);
+  return result;
   } catch (error) {
     console.log(error);
     return error;
   }
-
+  
 };
 
 // 2. 반환값이 없는 api 함수

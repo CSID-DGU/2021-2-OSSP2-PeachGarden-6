@@ -6,6 +6,9 @@ import PlayerBagde from "../Badge/PlayerBadge";
 import { useRecoilState } from "recoil";
 import { selectedPlayerState } from "../../recoil/search";
 import root from "window-or-global";
+import axios from "axios";
+import { graphPathList, urlSet } from "../../constants/urls";
+import { clearImages } from "../../utils/functions";
 
 const CompareModal = () => {
   const [selectedPlayer, setSelectedPlayer] =
@@ -15,12 +18,13 @@ const CompareModal = () => {
     setSelectedPlayer([]);
   }, [selectedPlayer]);
 
-  const comparePlayers = useCallback(() => {
+  const comparePlayers = useCallback(async() => {
     if (selectedPlayer.length !== 2) {
       root.alert("비교할 두 선수를 선택해주세요!");
       return;
     }
-    root.open(`/compare`, `comparePopup`, `toolbar=no, menubar=no, location=no, status=no, resizable=no, fullscreen=no, width=1000, height=800`, false);
+    await clearImages();
+    root.open(`/compare`, `comparePopup`, `toolbar=no, menubar=no, location=no, status=no, resizable=no, fullscreen=no, width=1350, height=800`, false);
   }, [selectedPlayer]);
   return (
     <CompareModalDiv>

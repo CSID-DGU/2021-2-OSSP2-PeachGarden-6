@@ -3,25 +3,51 @@ const { urlSet } = require("../constants/urls");
 const { PythonShell } = require("python-shell");
 const router = express.Router();
 const db = require("./../db");
-const { selectHitterWarCoordinates, selectPitcherWarCoordinates } = require("../constants/sql/statistic");
+const {
+  selectHitterWarCoordinates,
+  selectPitcherWarCoordinates,
+  selectHitterPlayerGamesCoordinates,
+  selectPitcherPlayerGamesCoordinates,
+} = require("../constants/sql/statistic");
 
 router.get(urlSet.scatter, async (req, res) => {
   let result = db.responseData();
   // coordinateList: 전체
   // markerList: 찍을 방점 두개 내지 한개
   const { type, markerList } = req.query;
-  let coordinateList = [];
-  console.log('넘겨받은 값: ', req.query);
+  let coordinateList = {
+    x: [],
+    y: [],
+  };
 
   try {
-    if (type) {
-      coordinateList = await db.sqlSelect(selectHitterWarCoordinates());
+    console.log('타입?? ', type);
+    if (type==='타자') {
+      coordinateList.x = await db.sqlSelect(
+        selectHitterPlayerGamesCoordinates()
+      );
+      coordinateList.y = await db.sqlSelect(selectHitterWarCoordinates());
     } else {
-      coordinateList = await db.sqlSelect(selectPitcherWarCoordinates());
+      coordinateList.x = await db.sqlSelect(
+        selectPitcherPlayerGamesCoordinates()
+      );
+      coordinateList.y = await db.sqlSelect(selectPitcherWarCoordinates());
     }
-    const args = JSON.stringify({coordinateList: coordinateList, markerList: markerList});
+    coordinateList.x = coordinateList.x.map((item, index) => item.playerGames);
+    coordinateList.y = coordinateList.y.map((item, index) => item.war);
+    const args = JSON.stringify({
+      coordinateList: coordinateList,
+      markerList: markerList,
+    });
     PythonShell.run(
       "routes/scatter.py",
+      { args: args },
+      function (err, results) {
+        if (err) throw err;
+      }
+    );
+    PythonShell.run(
+      "routes/pdf.py",
       { args: args },
       function (err, results) {
         if (err) throw err;

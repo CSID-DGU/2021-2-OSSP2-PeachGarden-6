@@ -3,12 +3,13 @@ const express = require('express');
 const next = require('next');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const searchRouter = require('./routes/search');
-const styleRouter = require('./routes/style');
 const teamRouter = require('./routes/team');
+const styleRouter = require('./routes/style');
 const compareRouter = require('./routes/compare');
 const statisticRouter = require('./routes/statistic');
 
@@ -20,6 +21,8 @@ app.prepare()
 .then(() => {  
   const server = express();
   server.use(express.static(path.join(__dirname, 'public')));
+  server.use(bodyParser.json());
+  server.use(bodyParser.urlencoded({extended: true}));
   
   server.get('/p/:id', (req, res) => {
     const actualPage = '/style';
@@ -29,8 +32,8 @@ app.prepare()
 
   server.use('/', indexRouter);
   server.use('/', searchRouter);
-  server.use('/', styleRouter);
   server.use('/', teamRouter);
+  server.use('/', styleRouter);
   server.use('/', compareRouter);
   server.use('/', statisticRouter);
 

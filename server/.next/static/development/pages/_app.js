@@ -117,6 +117,7 @@ var colors = {
   lightgray: "#d9d9d9",
   red: "#FF0000",
   orange: "#FF7F0E",
+  green: "#2dc75a",
   blue: "#1F77B4"
 };
 module.exports = {
@@ -9839,12 +9840,12 @@ if (hadRuntime) {
 
 /***/ "./node_modules/object-assign/index.js":
 /*!***************************************************************************************************!*\
-  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_202902f7c98643d43eb0 ***!
+  !*** delegated ./node_modules/object-assign/index.js from dll-reference dll_64d6546e2e0d29a940c9 ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_202902f7c98643d43eb0 */ "dll-reference dll_202902f7c98643d43eb0"))("./node_modules/object-assign/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_64d6546e2e0d29a940c9 */ "dll-reference dll_64d6546e2e0d29a940c9"))("./node_modules/object-assign/index.js");
 
 /***/ }),
 
@@ -11460,12 +11461,12 @@ exports.encode = exports.stringify = __webpack_require__(/*! ./encode */ "./node
 
 /***/ "./node_modules/react-dom/index.js":
 /*!***********************************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_202902f7c98643d43eb0 ***!
+  !*** delegated ./node_modules/react-dom/index.js from dll-reference dll_64d6546e2e0d29a940c9 ***!
   \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_202902f7c98643d43eb0 */ "dll-reference dll_202902f7c98643d43eb0"))("./node_modules/react-dom/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_64d6546e2e0d29a940c9 */ "dll-reference dll_64d6546e2e0d29a940c9"))("./node_modules/react-dom/index.js");
 
 /***/ }),
 
@@ -11681,12 +11682,12 @@ if (false) {} else {
 
 /***/ "./node_modules/react/index.js":
 /*!*******************************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference dll_202902f7c98643d43eb0 ***!
+  !*** delegated ./node_modules/react/index.js from dll-reference dll_64d6546e2e0d29a940c9 ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = (__webpack_require__(/*! dll-reference dll_202902f7c98643d43eb0 */ "dll-reference dll_202902f7c98643d43eb0"))("./node_modules/react/index.js");
+module.exports = (__webpack_require__(/*! dll-reference dll_64d6546e2e0d29a940c9 */ "dll-reference dll_64d6546e2e0d29a940c9"))("./node_modules/react/index.js");
 
 /***/ }),
 
@@ -21259,8 +21260,9 @@ var Root = function Root(props) {
       Component = props.Component,
       router = props.router;
   var comparePath = router.route.indexOf("compare");
+  var comparePath2 = router.route.indexOf("single");
   Object(react__WEBPACK_IMPORTED_MODULE_3__["useEffect"])(function () {}, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(recoil__WEBPACK_IMPORTED_MODULE_4__["RecoilRoot"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_1__["Container"], null, comparePath === -1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("title", null, "Static Website")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(MainSection, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(MainArea, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Component, pageProps)))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("title", null, "\uBE44\uAD50 \uACB0\uACFC")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Component, pageProps))));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(recoil__WEBPACK_IMPORTED_MODULE_4__["RecoilRoot"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_1__["Container"], null, comparePath === -1 && comparePath2 === -1 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("title", null, "Static Website")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(MainSection, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(MainArea, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Component, pageProps)))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_3___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("title", null, "\uBE44\uAD50 \uACB0\uACFC")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Component, pageProps))));
 };
 
 Root.defaultProps = {
@@ -21351,14 +21353,14 @@ return { page: module.exports.default }});
 
 /***/ }),
 
-/***/ "dll-reference dll_202902f7c98643d43eb0":
+/***/ "dll-reference dll_64d6546e2e0d29a940c9":
 /*!*******************************************!*\
-  !*** external "dll_202902f7c98643d43eb0" ***!
+  !*** external "dll_64d6546e2e0d29a940c9" ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = dll_202902f7c98643d43eb0;
+module.exports = dll_64d6546e2e0d29a940c9;
 
 /***/ })
 

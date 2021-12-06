@@ -3,11 +3,13 @@ import styled from "styled-components";
 import { colors } from "../../constants/colors";
 import TitleBadge from "../Badge/TitleBadge";
 
-const MainSectionType1 = ({text}) => {
-  return <MainSectionDiv>
-    <TitleBadge text={text}/>
-    <img src='/images/다운로드.jfif' alt='테스트'/>
-  </MainSectionDiv>;
+const MainSectionType1 = ({ text }) => {
+  return (
+    <MainSectionDiv>
+      <TitleBadge text={text} />
+      <img src="/images/이럴수가.jpg" alt="테스트" />
+    </MainSectionDiv>
+  );
 };
 
 export const MainSectionDiv = styled.div`
@@ -21,6 +23,5 @@ export const MainSectionDiv2 = styled.div`
   height: 650px;
   background-color: ${colors.mainFaded};
 `;
-
 
 export default MainSectionType1;

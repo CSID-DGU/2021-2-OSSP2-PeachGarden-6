@@ -51,7 +51,7 @@ const searchHitterStat = ({ name, position, team }) => `
     , HS.OBP
     , HS.SLG
     , HS.OPS
-    , PS.PLAYER_GAMES
+    , HS.PLAYER_GAMES
   FROM
     PLAYERS PL
   JOIN

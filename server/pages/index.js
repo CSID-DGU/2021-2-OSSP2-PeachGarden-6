@@ -60,26 +60,11 @@ const Index = () => {
       .get(urlSet.topThree)
       .then(({ data: { data } }) => {
         if (data) {
-          console.log(data);
           setTopThreeList(data.resultList);
         }
         else {
           setTopThreeList([]);
         }
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  }, []);
-  useEffect(async () => {
-    await axios
-      .get(urlSet.scatter, {
-        params: {
-          coordinateList: [1, 2, 3, 4],
-        }
-      })
-      .then(({ data: { data } }) => {
-        // console.log('결과값? ', data);
       })
       .catch((e) => {
         console.error(e);

@@ -47,7 +47,7 @@ const StatisticGraph = ({ data, type }) => {
         <div>
           <div>
             <TextBadge
-              text={`WAR`}
+              text={`출전 경기수 ~ WAR`}
               color={colors.white}
               backgroundColor={colors.gray}
             />
@@ -57,20 +57,22 @@ const StatisticGraph = ({ data, type }) => {
         <div>
           <div>
             <TextBadge
-              text={`확률 분포도(미정)`}
+              text={`WAR`}
               color={colors.white}
               backgroundColor={colors.gray}
             />
           </div>
+          <img src="images/pdf_war.png" alt="" />
         </div>
         <div>
           <div>
             <TextBadge
-              text={`확률 분포도(미정)`}
+              text={`출전 경기수`}
               color={colors.white}
               backgroundColor={colors.gray}
             />
           </div>
+          <img src="images/pdf_player_games.png" alt="" />
         </div>
       </RowContainerType2>
       {dummyCounter.map((item, index) => {
@@ -78,6 +80,7 @@ const StatisticGraph = ({ data, type }) => {
           return (
             <RowContainer style={{ height: type === "single" && 80 }}>
               {[0, 1, 2, 3].map((item, index2) => (
+                dummyCounter[index + item]?
                 <div>
                   <div>
                     <TextBadge
@@ -120,6 +123,7 @@ const StatisticGraph = ({ data, type }) => {
                     }
                   />
                 </div>
+                :null
               ))}
             </RowContainer>
           );
@@ -158,6 +162,7 @@ const RowContainerType2 = styled.div`
     width: 100%;
     height: 300px;
     border-right: 1px solid ${colors.gray};
+    text-align: center;
     & > :first-child {
       position: absolute;
       top: 10px;
@@ -165,7 +170,6 @@ const RowContainerType2 = styled.div`
       align-self: center;
     }
     & > img {
-      width: 100%;
       height: 100%;
     }
   }

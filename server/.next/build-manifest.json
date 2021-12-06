@@ -1,6 +1,6 @@
 {
   "devFiles": [
-    "static/development/dll/dll_a9467d1af2553b111452.js"
+    "static/development/dll/dll_a173b0db2e6447fc5bed.js"
   ],
   "pages": {
     "/_app": [
@@ -11,7 +11,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/team": [
+    "/search": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/compare": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

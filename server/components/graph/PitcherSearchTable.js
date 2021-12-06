@@ -3,9 +3,10 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 import { selectedPlayerState } from "../../recoil/search";
-import { valueExtractor } from "../../utils/functions";
+import { clearImages, valueExtractor } from "../../utils/functions";
 import ToggleButton from "../Button/ToggleButton";
 import root from "window-or-global";
+import { TextButton } from "./SearchTable";
 
 const COLUMN_LIST = [
   "",
@@ -23,13 +24,11 @@ const COLUMN_LIST = [
 ];
 
 const PitcherSearchTable = ({ data }) => {
-  const handleClick = useCallback(() => {
-  }, []);
   return (
     <BasicTableTable>
       <BasicTableColumn columnList={COLUMN_LIST} />
       {data && data.length > 0 && (
-        <BasicTableBody data={data} handleClick={handleClick} />
+        <BasicTableBody data={data} />
       )}
     </BasicTableTable>
   );
@@ -57,7 +56,7 @@ const BasicTableColumn = ({ columnList }) => {
   );
 };
 
-const BasicTableBody = ({ data, handleClick }) => {
+const BasicTableBody = ({ data }) => {
   const [selectedPlayer, setSelectedPlayer] =
     useRecoilState(selectedPlayerState);
 
@@ -87,6 +86,17 @@ const BasicTableBody = ({ data, handleClick }) => {
       ]);
     }
   };
+
+  const openPlayerStat = useCallback(async (pid) => {
+    await clearImages();
+    root.open(
+      `/single?pid=${pid}`,
+      `comparePopup`,
+      `toolbar=no, menubar=no, location=no, status=no, resizable=no, fullscreen=no, width=1000, height=900`,
+      false
+    );
+  }, []);
+
   return (
     (
       <BasicTableBodyBody>
@@ -119,7 +129,11 @@ const BasicTableBody = ({ data, handleClick }) => {
                     }).includes(pid)}
                   />
                 </BasicTableData>
-                <BasicTableData>{pname}</BasicTableData>
+              <BasicTableData>
+                <TextButton onClick={() => openPlayerStat(pid)}>
+                  {pname}
+                </TextButton>
+              </BasicTableData>
                 <BasicTableData>{war}</BasicTableData>
                 <BasicTableData>{playerGames}</BasicTableData>
                 <BasicTableData>{wins}</BasicTableData>

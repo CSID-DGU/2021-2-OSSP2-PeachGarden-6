@@ -7,14 +7,14 @@ const ProfileModal = ({ data, side }) => {
   const { playerInfo, bestInfo, worstInfo, statInfo, styleInfo } = data;
   const { pname, birth, shortName} = playerInfo;
   let playerPosRender = 'P';
-  if ('ops' in statInfo){
-    const { playerPos } = playerInfo;
-    playerPosRender = playerPos;
-    convertHitterStat(statInfo);
-  }
-  else{
-    convertPitcherStat(statInfo);
-  }
+  // if ('ops' in statInfo){
+  //   const { playerPos } = playerInfo;
+  //   playerPosRender = playerPos;
+  //   convertHitterStat(statInfo);
+  // }
+  // else{
+  //   convertPitcherStat(statInfo);
+  // }
   
   const styles = Object.values(styleInfo);
   

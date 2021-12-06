@@ -8,6 +8,7 @@ const { topThreeProps } = require("../constants/topThree");
 const { urlSet } = require("../constants/urls");
 const router = express.Router();
 const db = require("./../db");
+const fs = require("fs");
 
 router.get(urlSet.leaderboard, async (req, res) => {
   let result = db.responseData();
@@ -129,6 +130,41 @@ router.get(urlSet.waa, async (req, res) => {
     result.error = 1;
     result.message = error;
     return res.status(200).send(result);
+  }
+});
+
+const deleteFile = (filePath) => {
+  if (filePath !== null) {
+    fs.unlink(filePath, (err) => {
+      // console.log('?', err);
+    });
+  }
+};
+
+router.put(urlSet.deleteFile, (req, res) => {
+  let result = db.responseData();
+  const { filePath } = req.body;
+  try {
+    deleteFile(`public/${filePath}`);
+    result.data = "success";
+    res.status(200).send(result);
+  } catch (error) {
+    result.error = 1;
+    result.message = error;
+    res.status(200).send(result);
+  }
+});
+
+router.put(urlSet.checkFile, (req, res) => {
+  let result = db.responseData();
+  const { filePath } = req.body;
+  try {
+    result.data = fs.existsSync(`public/${filePath}`);
+    res.status(200).send(result);
+  } catch (error) {
+    result.error = 1;
+    result.message = error;
+    res.status(200).send(result);
   }
 });
 

@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 import { selectedPlayerState } from "../../recoil/search";
-import { valueExtractor } from "../../utils/functions";
+import { clearImages, valueExtractor } from "../../utils/functions";
 import ToggleButton from "../Button/ToggleButton";
 import root from "window-or-global";
 
@@ -69,7 +69,9 @@ const BasicTableBody = ({ data }) => {
     } else {
       // 추가
       if (selectedPlayer.length === 2) {
-        root.alert("선수 비교는 최대 2인까지만 가능합니다!\n우측 리스트를 확인해주세요!");
+        root.alert(
+          "선수 비교는 최대 2인까지만 가능합니다!\n우측 리스트를 확인해주세요!"
+        );
         return;
       }
       let target = data.filter((item, index) => item.pid === pid)[0];
@@ -80,8 +82,14 @@ const BasicTableBody = ({ data }) => {
     }
   };
 
-  const openPlayerStat = useCallback((pid) => {
-    root.open(`/single?pid=${pid}`, `comparePopup`, `toolbar=no, menubar=no, location=no, status=no, resizable=no, fullscreen=no, width=1000, height=900`, false);
+  const openPlayerStat = useCallback(async (pid) => {
+    await clearImages();
+    root.open(
+      `/single?pid=${pid}`,
+      `comparePopup`,
+      `toolbar=no, menubar=no, location=no, status=no, resizable=no, fullscreen=no, width=1000, height=900`,
+      false
+    );
   }, []);
 
   return (
@@ -99,7 +107,11 @@ const BasicTableBody = ({ data }) => {
                   }).includes(pid)}
                 />
               </BasicTableData>
-              <BasicTableData><TextButton onClick={() => openPlayerStat(pid)}>{pname}</TextButton></BasicTableData>
+              <BasicTableData>
+                <TextButton onClick={() => openPlayerStat(pid)}>
+                  {pname}
+                </TextButton>
+              </BasicTableData>
               <BasicTableData>{war}</BasicTableData>
               <BasicTableData>{hitAvg}</BasicTableData>
               <BasicTableData>{hr}</BasicTableData>
@@ -133,7 +145,7 @@ const BasicTableData = styled.td`
   text-align: center;
 `;
 
-const TextButton = styled.button`
+export const TextButton = styled.button`
   background-color: unset;
   border: unset;
   color: ${colors.black};

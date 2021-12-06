@@ -11,13 +11,14 @@ const Root = (props) => {
   const { store, pageProps, Component, router } = props;
 
   const comparePath = router.route.indexOf("compare");
+  const comparePath2 = router.route.indexOf("single");
 
   useEffect(() => {}, []);
 
   return (
     <RecoilRoot>
       <Container>
-        {comparePath === -1 ? (
+        {comparePath === -1 && comparePath2 === -1 ? (
           <>
             <Head>
               <title>Static Website</title>

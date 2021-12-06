@@ -1,17 +1,46 @@
 const selectPitcherWarCoordinates = () => `
   select 
     ps.war
-    , ps.player_games 
   from 
     pitcher_stat ps 
+  order by
+    ps.player_games desc
+    , ps.war desc
+`;
+
+const selectPitcherPlayerGamesCoordinates = () => `
+  select 
+    ps.player_games 
+  from 
+    pitcher_stat ps 
+  order by
+    ps.player_games desc
+    , ps.war desc
 `;
 
 const selectHitterWarCoordinates = () => `
   select 
     hs.war
-    , hs.player_games 
   from 
     hitter_stat hs 
+  order by
+    hs.player_games desc
+    , hs.war desc
 `;
 
-module.exports = { selectHitterWarCoordinates, selectPitcherWarCoordinates };
+const selectHitterPlayerGamesCoordinates = () => `
+  select 
+    hs.player_games 
+  from 
+    hitter_stat hs 
+  order by
+    hs.player_games desc
+    , hs.war desc
+`;
+
+module.exports = {
+  selectHitterWarCoordinates,
+  selectPitcherPlayerGamesCoordinates,
+  selectPitcherWarCoordinates,
+  selectHitterPlayerGamesCoordinates,
+};

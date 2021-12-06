@@ -37,56 +37,58 @@ router.get(urlSet.compare, async (req, res, next) => {
       p1Info: {},
       p2Info: {},
       avgInfo: {},
-    }
+    };
     for await (pid of [pidL, pidR]) {
-      if (pid / 10000 < 2) {
-        CompareResult0 = await db.sqlSelect(
-          searchHitterInfo({
-            pid: pid ? pid : null,
-          })
-        );
-  
-        CompareResult1 = await db.sqlSelect(
-          searchAllHitStat({
-            pid: pid ? pid : null,
-          })
-        );
-    
-        CompareResult2 = await db.sqlSelect(
-          searchHitterStyle({
-            pid: pid ? pid : null,
-          })
-        );
-        
-        avgStatInfo = await db.sqlSelect(searchAvgHitStat());
-      } else {
-        CompareResult0 = await db.sqlSelect(
-          searchPitcherInfo({
-            pid: pid ? pid : null,
-          })
-        );
-    
-        CompareResult1 = await db.sqlSelect(
-          searchAllPitStat({
-            pid: pid ? pid : null,
-          })
-        );
-  
-        CompareResult2 = await db.sqlSelect(
-          searchPitcherStyle({
-            pid: pid ? pid : null,
-          })
-        );
+      if (pid) {
+        if (pid / 10000 < 2) {
+          CompareResult0 = await db.sqlSelect(
+            searchHitterInfo({
+              pid: pid ? pid : null,
+            })
+          );
 
-        avgStatInfo = await db.sqlSelect(searchAvgPitStat());
+          CompareResult1 = await db.sqlSelect(
+            searchAllHitStat({
+              pid: pid ? pid : null,
+            })
+          );
+
+          CompareResult2 = await db.sqlSelect(
+            searchHitterStyle({
+              pid: pid ? pid : null,
+            })
+          );
+
+          avgStatInfo = await db.sqlSelect(searchAvgHitStat());
+        } else {
+          CompareResult0 = await db.sqlSelect(
+            searchPitcherInfo({
+              pid: pid ? pid : null,
+            })
+          );
+
+          CompareResult1 = await db.sqlSelect(
+            searchAllPitStat({
+              pid: pid ? pid : null,
+            })
+          );
+
+          CompareResult2 = await db.sqlSelect(
+            searchPitcherStyle({
+              pid: pid ? pid : null,
+            })
+          );
+
+          avgStatInfo = await db.sqlSelect(searchAvgPitStat());
+        }
       }
-    
+
       CompareResult3 = await db.sqlSelect(
         searchBestCount({
           pid: pid ? pid : null,
         })
       );
-    
+
       CompareResult4 = await db.sqlSelect(
         searchWorstCount({
           pid: pid ? pid : null,
@@ -113,7 +115,6 @@ router.get(urlSet.compare, async (req, res, next) => {
         };
       }
     }
-
     data.data = result;
     return res.status(200).send(data);
   } catch (error) {
@@ -122,7 +123,6 @@ router.get(urlSet.compare, async (req, res, next) => {
     console.log(error);
     return res.status(200).send(data);
   }
-  
 });
 
 module.exports = router;
