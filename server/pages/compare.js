@@ -147,7 +147,7 @@ const ComparePage = () => {
     </CompareDiv>
   ) : (
     <div>
-      <img src="images/이럴수가.jpg" />
+      <img src="images/Spinner.gif" />
     </div>
   );
 };
