@@ -146,8 +146,8 @@ const ComparePage = () => {
       </CompareBottomDiv>
     </CompareDiv>
   ) : (
-    <div>
-      <img src="images/Spinner.gif" />
+    <div align="center">
+      <img src="images/Spinner.gif"/>
     </div>
   );
 };
