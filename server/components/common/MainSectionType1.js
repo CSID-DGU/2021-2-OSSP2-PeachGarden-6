@@ -7,7 +7,7 @@ const MainSectionType1 = ({ text }) => {
   return (
     <MainSectionDiv>
       <TitleBadge text={text} />
-      <img src="/images/이럴수가.jpg" alt="테스트" />
+      <img src="/images/compare_result.png" alt="테스트" />
     </MainSectionDiv>
   );
 };

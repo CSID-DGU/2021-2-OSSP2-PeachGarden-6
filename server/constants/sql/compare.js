@@ -69,33 +69,33 @@ const searchAllPitStat = ({ pid }) => `
 
 const searchAvgPitStat = () => `
   SELECT
-    AVG(PS.war) AS WAR
-    , AVG(PS.player_games) AS PLAYER_GAMES
-    , AVG(PS.cg) AS CG
-    , AVG(PS.sho) AS SHO
-    , AVG(PS.gs) AS GS
-    , AVG(PS.wins) AS WINS
-    , AVG(PS.loses) AS LOSES
-    , AVG(PS.sv) AS SV
-    , AVG(PS.hld) AS HLD
-    , AVG(PS.ip) AS IP
-    , AVG(PS.r) AS R
-    , AVG(PS.er) AS ER
-    , AVG(PS.hits) AS HITS
-    , AVG(PS.doubles) AS DOUBLES
-    , AVG(PS.triples) AS TRIPLES
-    , AVG(PS.hr) AS HR
-    , AVG(PS.bb) AS BB
-    , AVG(PS.hbp) AS HBP
-    , AVG(PS.ibb) AS IBB
-    , AVG(PS.so) AS SO
-    , AVG(PS.bk) AS BK
-    , AVG(PS.wp) AS WP
-    , AVG(PS.era) AS ERA
-    , AVG(PS.fip) AS FIP
-    , AVG(PS.whip) AS WHIP
-    , AVG(PS.era_plus) AS ERA_PLUS
-    , AVG(PS.fip_plus) AS FIP_PLUS
+    Avg(PS.war) AS WAR
+    , Avg(PS.player_games) AS PLAYER_GAMES
+    , Avg(PS.cg) AS CG
+    , Avg(PS.sho) AS SHO
+    , Avg(PS.gs) AS GS
+    , Avg(PS.wins) AS WINS
+    , Avg(PS.loses) AS LOSES
+    , Avg(PS.sv) AS SV
+    , Avg(PS.hld) AS HLD
+    , Avg(PS.ip) AS IP
+    , Avg(PS.r) AS R
+    , Avg(PS.er) AS ER
+    , Avg(PS.hits) AS HITS
+    , Avg(PS.doubles) AS DOUBLES
+    , Avg(PS.triples) AS TRIPLES
+    , Avg(PS.hr) AS HR
+    , Avg(PS.bb) AS BB
+    , Avg(PS.hbp) AS HBP
+    , Avg(PS.ibb) AS IBB
+    , Avg(PS.so) AS SO
+    , Avg(PS.bk) AS BK
+    , Avg(PS.wp) AS WP
+    , Avg(PS.era) AS ERA
+    , Avg(PS.fip) AS FIP
+    , Avg(PS.whip) AS WHIP
+    , Avg(PS.era_plus) AS ERA_PLUS
+    , Avg(PS.fip_plus) AS FIP_PLUS
   FROM
     pitcher_stat AS PS
 `;
@@ -119,7 +119,7 @@ const searchAllHitStat = ({ pid }) => `
     , HS.so
     , HS.gidp
     , HS.sh
-    , HS.hit_avg
+    , HS.hit_Avg
     , HS.obp
     , HS.slg
     , HS.ops
@@ -133,29 +133,29 @@ const searchAllHitStat = ({ pid }) => `
 
 const searchAvgHitStat = () => `
   SELECT
-    AVG(HS.war) AS WAR
-    , AVG(HS.player_games) AS PLAYER_GAMES
-    , AVG(HS.pa) AS PA
-    , AVG(HS.ab) AS AB
-    , AVG(HS.r) AS R
-    , AVG(HS.rbi) AS RBI
-    , AVG(HS.hits) AS HITS
-    , AVG(HS.doubles) AS DOUBLES
-    , AVG(HS.triples) AS TRIPLES
-    , AVG(HS.hr) AS HR
-    , AVG(HS.sb) AS SB
-    , AVG(HS.cs) AS CS
-    , AVG(HS.bb) AS BB
-    , AVG(HS.hbp) AS HBP
-    , AVG(HS.so) AS SO
-    , AVG(HS.gidp) AS GIDP
-    , AVG(HS.sh) AS SH
-    , AVG(HS.hit_avg) AS HIT_AVG
-    , AVG(HS.obp) AS OBP
-    , AVG(HS.slg) AS SLG
-    , AVG(HS.ops) AS OPS
-    , AVG(HS.woba) AS WOBA
-    , AVG(HS.wrc_plus) AS WRC_PLUS
+    Avg(HS.war) AS WAR
+    , Avg(HS.player_games) AS PLAYER_GAMES
+    , Avg(HS.pa) AS PA
+    , Avg(HS.ab) AS AB
+    , Avg(HS.r) AS R
+    , Avg(HS.rbi) AS RBI
+    , Avg(HS.hits) AS HITS
+    , Avg(HS.doubles) AS DOUBLES
+    , Avg(HS.triples) AS TRIPLES
+    , Avg(HS.hr) AS HR
+    , Avg(HS.sb) AS SB
+    , Avg(HS.cs) AS CS
+    , Avg(HS.bb) AS BB
+    , Avg(HS.hbp) AS HBP
+    , Avg(HS.so) AS SO
+    , Avg(HS.gidp) AS GIDP
+    , Avg(HS.sh) AS SH
+    , Avg(HS.hit_Avg) AS HIT_Avg
+    , Avg(HS.obp) AS OBP
+    , Avg(HS.slg) AS SLG
+    , Avg(HS.ops) AS OPS
+    , Avg(HS.woba) AS WOBA
+    , Avg(HS.wrc_plus) AS WRC_PLUS
   FROM
     hitter_stat AS HS
 `;
