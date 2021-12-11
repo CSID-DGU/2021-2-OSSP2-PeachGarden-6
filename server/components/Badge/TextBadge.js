@@ -14,7 +14,7 @@ const TextBadgeP = styled.p`
   padding: 7.5px 30px;
   border-radius: 5px;
   text-align: center;
-  width: 86%;
+  width: 45px;
   margin: 0 auto;
 `;
 

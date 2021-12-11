@@ -11,19 +11,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/index": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/compare": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/search": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/": [
+    "/compare": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

@@ -119,7 +119,7 @@ const ComparePage = () => {
       )
       {curScreen ? (
         <CompareContentDiv>
-          <StatisticTable />
+          <StatisticTable type={`compare`} data={playerInfoList}/>
         </CompareContentDiv>
       ) : (
         <CompareContentGraphDiv>
