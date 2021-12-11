@@ -15,6 +15,7 @@ const TitleBadgeDiv = styled.div`
   text-align: center;
   padding: 10px 0;
   font-size: 14px;
+  border-radius: 5px;
   color: ${colors.white};
   background-color: ${colors.main};
 `;
