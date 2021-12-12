@@ -4,7 +4,9 @@ import ProfileModal from "../components/Modal/ProfileModal";
 import { graphPathList, urlSet } from "../constants/urls";
 import root from "window-or-global";
 import StatisticGraph from "../components/graph/StatisticGraph";
-import { CompareContentGraphDiv, CompareDiv, CompareTopDiv } from "./compare";
+import TextBadge from "../components/Badge/TextBadge";
+import { colors } from "../constants/colors";
+import { CompareContentGraphDiv, CompareDiv, CompareTopDiv, CompareBottomDiv } from "./compare";
 import {
   convertHitterStat,
   convertPitcherStat,
@@ -84,6 +86,18 @@ const SinglePage = ({ pid }) => {
       <CompareContentGraphDiv>
         <StatisticGraph type={`single`} data={playerInfo} />
       </CompareContentGraphDiv>
+      <CompareBottomDiv>
+        <TextBadge
+          text={playerInfo.p1Info.playerInfo.pname}
+          backgroundColor={colors.blue}
+          color={colors.white}
+        />
+        <TextBadge
+          text={`평균치`}
+          backgroundColor={colors.orange}
+          color={colors.white}
+        />
+      </CompareBottomDiv>
     </CompareDiv>
   ) : (
     <div align="center">

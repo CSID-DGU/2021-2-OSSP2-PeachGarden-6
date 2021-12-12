@@ -204,7 +204,7 @@ export const CompareContentGraphDiv = styled.div`
   border: 1px solid ${colors.gray};
 `;
 
-const CompareBottomDiv = styled.div`
+export const CompareBottomDiv = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
