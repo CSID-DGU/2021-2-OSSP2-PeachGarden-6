@@ -8,7 +8,7 @@ export const searchState = atom({
   default: {
     role: "타자",
     team: "두산",
-    position: "C",
+    position: "전체",
     name: null,
   },
 });

@@ -2,7 +2,7 @@ const mariadb = require("mariadb");
 const _ = require("lodash");
 
 const pool = mariadb.createPool({
-  host: "localhost",
+  host: "14.52.69.42",
   user: "root",
   password: "0000",
   port: 3306,

@@ -68,24 +68,4 @@ const StatisticTable = ({ data, type }) => {
   )
 }
 
-const RowContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  border: 2px solid gray;
-  align-items: center;
-  & > div {
-    display: flex;
-    width: 80%;
-    & > :first-child {
-      width: 100%;
-      align-self: center;
-    }
-    & > :last-child {
-    }
-  }
-`;
-
 export default memo(StatisticTable);

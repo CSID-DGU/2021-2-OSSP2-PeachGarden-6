@@ -32,9 +32,9 @@ const searchPitcherStat = ({ name, team }) => `
   }
   ${
     team
-      ? `
+      ?team !== '전체'? `
     AND TS.SHORT_NAME = "${team}"`
-      : ``
+      : ``:``
   }
   ORDER BY WAR DESC
 `;
@@ -72,9 +72,9 @@ const searchHitterStat = ({ name, position, team }) => `
   }
   ${
     team
-      ? `
+      ?team !== '전체'? `
     AND TS.SHORT_NAME = "${team}"`
-      : ``
+      : ``:``
   }
   ${
     position

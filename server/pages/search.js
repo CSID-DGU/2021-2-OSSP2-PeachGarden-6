@@ -43,7 +43,7 @@ const SearchPage = (props) => {
       name: name ? name : null,
       position: position ? position : "전체",
       role: role ? role : "타자",
-      team: team ? team : "두산",
+      team: team ? team : "전체",
     });
   }, [props]);
 

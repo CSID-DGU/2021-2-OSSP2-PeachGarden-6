@@ -18,7 +18,7 @@ const CompareTableTable = styled.table`
   text-align: center;
   border-collapse: collapse;
   background-color: ${colors.white};
-  font-size: 12px;
+  font-size: 16px;
 `;
 
 const CompareTableColumn = ({ columnList, parentIndex }) => {
@@ -50,14 +50,14 @@ const CompareTableBody = ({ dummyCounter, data }) => {
             return (
               <CompareTableRow>
               <CompareTableData style={{backgroundColor:colors.main}}>{dummyCounter[index]}</CompareTableData>
-              <CompareTableData>{p1Stat[dummyCounter[index]]}</CompareTableData>
-              <CompareTableData>{p2Stat[dummyCounter[index]]}</CompareTableData>
+              <CompareTableData style={{color: p1Stat[dummyCounter[index]] > p2Stat[dummyCounter[index]] ? `red` : `black` }}>{p1Stat[dummyCounter[index]]}</CompareTableData>
+              <CompareTableData style={{color: p1Stat[dummyCounter[index]] > p2Stat[dummyCounter[index]] ? `black` : p1Stat[dummyCounter[index]] === p2Stat[dummyCounter[index]] ? `black` : `red` }}>{p2Stat[dummyCounter[index]]}</CompareTableData>
               <CompareTableData style={{backgroundColor:colors.main}}>{dummyCounter[index+1]}</CompareTableData>
-              <CompareTableData>{p1Stat[dummyCounter[index+1]]}</CompareTableData>
-              <CompareTableData>{p2Stat[dummyCounter[index+1]]}</CompareTableData>
+              <CompareTableData style={{color: p1Stat[dummyCounter[index+1]] > p2Stat[dummyCounter[index+1]] ? `red` : `black` }}>{p1Stat[dummyCounter[index+1]]}</CompareTableData>
+              <CompareTableData style={{color: p1Stat[dummyCounter[index+1]] > p2Stat[dummyCounter[index+1]] ? `black` : p1Stat[dummyCounter[index+1]] === p2Stat[dummyCounter[index+1]] ? `black` : `red` }}>{p2Stat[dummyCounter[index+1]]}</CompareTableData>
               <CompareTableData style={{backgroundColor:colors.main}}>{dummyCounter[index+2]}</CompareTableData>
-              <CompareTableData>{p1Stat[dummyCounter[index+2]]}</CompareTableData>
-              <CompareTableData>{p2Stat[dummyCounter[index+2]]}</CompareTableData>
+              <CompareTableData style={{color: p1Stat[dummyCounter[index+2]] > p2Stat[dummyCounter[index+2]] ? `red` : `black` }}>{p1Stat[dummyCounter[index+2]]}</CompareTableData>
+              <CompareTableData style={{color: p1Stat[dummyCounter[index+2]] > p2Stat[dummyCounter[index+2]] ? `black` : p1Stat[dummyCounter[index+2]] === p2Stat[dummyCounter[index+2]] ? `black` : `red` }}>{p2Stat[dummyCounter[index+2]]}</CompareTableData>
             </CompareTableRow>
             )
           }

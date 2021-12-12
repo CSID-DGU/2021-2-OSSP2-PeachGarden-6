@@ -8,6 +8,7 @@ export const SEARCH_OPTION_LIST = [
     option: "team",
     text: "팀",
     list: [
+      "전체",
       "두산",
       "삼성",
       "NC",
