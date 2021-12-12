@@ -21,7 +21,7 @@ const Root = (props) => {
         {comparePath === -1 && comparePath2 === -1 ? (
           <>
             <Head>
-              <title>Static Website</title>
+              <title>Player-Battle</title>
             </Head>
             <Header />
             <MainSection>

@@ -5,29 +5,21 @@ import { convertHitterStat, convertPitcherStat } from "../../utils/ConvertStatIn
 
 const ProfileModal = ({ data, side }) => {
   const { playerInfo, bestInfo, worstInfo, statInfo, styleInfo } = data;
-  const { pname, birth, shortName} = playerInfo;
-  let playerPosRender = 'P';
-  // if ('ops' in statInfo){
-  //   const { playerPos } = playerInfo;
-  //   playerPosRender = playerPos;
-  //   convertHitterStat(statInfo);
-  // }
-  // else{
-  //   convertPitcherStat(statInfo);
-  // }
-  
-  const styles = Object.values(styleInfo);
+  var { pname, birth, shortName, playerPos } = playerInfo;
+
+  if (playerPos === undefined)
+    playerPos = 'P';
   
   return (
     <MainDiv>
-      <SideCardDiv style={{backgroundColor: side==='R'?colors.orange:colors.blue}}/>
+      <SideCardDiv style={{ backgroundColor: side === 'R' ? colors.orange : colors.blue }} />
       <SideMainDiv>
-        <p style={{color: side==='R'?colors.orange:colors.blue}}>{pname}</p>
+        <p style={{ color: side === 'R' ? colors.orange : colors.blue }}>{pname}</p>
         <div>
           <p>생년월일: {birth}</p>
-          <p>포지션: {playerPosRender}</p>
+          <p>포지션: {playerPos}</p>
           <p>소속: {shortName}</p>
-          <p>칭호: {}</p>
+          <p>칭호: { }</p>
           <p>Best: {bestInfo.count} | Worst: {worstInfo.count}</p>
         </div>
       </SideMainDiv>

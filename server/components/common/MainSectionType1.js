@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
-import TextBadge from "../Badge/TextBadge";
+import MainBadge from "../Badge/MainBadge";
 import TitleBadge from "../Badge/TitleBadge";
 
 const MainSectionType1 = ({ text }) => {
@@ -9,7 +9,7 @@ const MainSectionType1 = ({ text }) => {
     <MainSectionDiv>
       <TitleBadge text={text} />
       <MainImg src="/images/compare_result.png" alt="테스트" />
-      <TextBadge text={"투/투, 타/타 비교 서비스 제공!"} color= {colors.white} backgroundColor= {colors.green}/>
+      <MainBadge text={"투/투, 타/타 비교 서비스 제공!"} color= {colors.white} backgroundColor= {colors.green}/>
     </MainSectionDiv>
   );
 };
