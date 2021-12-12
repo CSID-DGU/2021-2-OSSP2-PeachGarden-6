@@ -135,11 +135,6 @@ const ComparePage = () => {
       )}
       <CompareBottomDiv>
         <TextBadge
-          text={`평균치`}
-          backgroundColor={colors.green}
-          color={colors.white}
-        />
-        <TextBadge
           text={playerInfoList.p1Info.playerInfo.pname}
           backgroundColor={colors.blue}
           color={colors.white}
@@ -147,6 +142,11 @@ const ComparePage = () => {
         <TextBadge
           text={playerInfoList.p2Info.playerInfo.pname}
           backgroundColor={colors.orange}
+          color={colors.white}
+        />
+        <TextBadge
+          text={`평균치`}
+          backgroundColor={colors.green}
           color={colors.white}
         />
         <ButtonType1 text={curScreen ? `그래프` : `표`} onClick={handleClick} />
