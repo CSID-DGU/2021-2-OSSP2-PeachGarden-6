@@ -9,7 +9,7 @@ const ProfileModal = ({ data, side }) => {
 
   if (playerPos === undefined)
     playerPos = 'P';
-  
+
   return (
     <MainDiv>
       <SideCardDiv style={{ backgroundColor: side === 'R' ? colors.orange : colors.blue }} />
@@ -19,7 +19,6 @@ const ProfileModal = ({ data, side }) => {
           <p>생년월일: {birth}</p>
           <p>포지션: {playerPos}</p>
           <p>소속: {shortName}</p>
-          <p>칭호: { }</p>
           <p>Best: {bestInfo.count} | Worst: {worstInfo.count}</p>
         </div>
       </SideMainDiv>

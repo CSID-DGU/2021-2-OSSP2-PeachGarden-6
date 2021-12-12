@@ -16,6 +16,7 @@ import {
   convertHitterStat,
   convertPitcherStat,
 } from "../utils/ConvertStatInfo";
+import { StyleModal } from "../components/Modal/StyleModal";
 
 const ComparePage = () => {
   const [selectedPlayer, setSelectedPlayer] =
@@ -37,7 +38,7 @@ const ComparePage = () => {
       await axios
         .get(
           urlSet.compare +
-            `?a=a${pidList ? `&pidL=${pidList[0]}&pidR=${pidList[1]}` : ``}`
+          `?a=a${pidList ? `&pidL=${pidList[0]}&pidR=${pidList[1]}` : ``}`
         )
         .then(({ data: { data } }) => {
           console.log(data);
@@ -112,14 +113,20 @@ const ComparePage = () => {
   return !loading && playerInfoList ? (
     <CompareDiv>
       <CompareTopDiv>
-        <ProfileModal side={"L"} data={playerInfoList.p1Info} />
+        <CompareModalSetDiv>
+          <ProfileModal side={"L"} data={playerInfoList.p1Info} />
+          <StyleModal side={"L"} styleList={Object.values(playerInfoList.p1Info.styleInfo)} />
+        </CompareModalSetDiv>
         <h1>VS</h1>
-        <ProfileModal side={"R"} data={playerInfoList.p2Info} />
+        <CompareModalSetDiv>
+          <StyleModal side={"R"} styleList={Object.values(playerInfoList.p2Info.styleInfo)} />
+          <ProfileModal side={"R"} data={playerInfoList.p2Info} />
+        </CompareModalSetDiv>
       </CompareTopDiv>
       )
       {curScreen ? (
         <CompareContentDiv>
-          <StatisticTable type={`compare`} data={playerInfoList}/>
+          <StatisticTable type={`compare`} data={playerInfoList} />
         </CompareContentDiv>
       ) : (
         <CompareContentGraphDiv>
@@ -147,7 +154,7 @@ const ComparePage = () => {
     </CompareDiv>
   ) : (
     <div align="center">
-      <img src="images/Spinner.gif"/>
+      <img src="images/Spinner.gif" />
     </div>
   );
 };
@@ -164,6 +171,11 @@ export const CompareDiv = styled.div`
     margin-top: 20px;
   }
 `;
+
+export const CompareModalSetDiv = styled.div`
+  display:flex;
+  justify-content: flex-start;
+`
 
 export const CompareTopDiv = styled.div`
   display: flex;

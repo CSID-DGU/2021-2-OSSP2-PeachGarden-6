@@ -101,7 +101,7 @@ router.get(urlSet.compare, async (req, res, next) => {
         result.p1Info = {
           playerInfo: CompareResult0[0],
           statInfo: CompareResult1[0],
-          styleInfo: CompareResult2,
+          styleInfo: CompareResult2.map((item, index) => item.sname),
           bestInfo: CompareResult3[0],
           worstInfo: CompareResult4[0],
         };
@@ -109,7 +109,7 @@ router.get(urlSet.compare, async (req, res, next) => {
         result.p2Info = {
           playerInfo: CompareResult0[0],
           statInfo: CompareResult1[0],
-          styleInfo: CompareResult2,
+          styleInfo: CompareResult2.map((item, index) => item.sname),
           bestInfo: CompareResult3[0],
           worstInfo: CompareResult4[0],
         };
