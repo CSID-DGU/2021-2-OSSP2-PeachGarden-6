@@ -86,8 +86,8 @@ const SinglePage = ({ pid }) => {
       </CompareContentGraphDiv>
     </CompareDiv>
   ) : (
-    <div>
-      <img src="images/이럴수가.jpg" />
+    <div align="center">
+      <img src="images/spinner.gif" />
     </div>
   );
 };

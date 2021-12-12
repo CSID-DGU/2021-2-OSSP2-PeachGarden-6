@@ -87,7 +87,7 @@ const BasicTableBody = ({ data }) => {
     root.open(
       `/single?pid=${pid}`,
       `comparePopup`,
-      `toolbar=no, menubar=no, location=no, status=no, resizable=no, fullscreen=no, width=1000, height=900`,
+      `toolbar=no, menubar=no, location=no, status=no, resizable=no, fullscreen=no, width=1350, height=800`,
       false
     );
   }, []);

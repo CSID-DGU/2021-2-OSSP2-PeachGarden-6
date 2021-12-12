@@ -15,7 +15,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/compare": [
+    "/single": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
