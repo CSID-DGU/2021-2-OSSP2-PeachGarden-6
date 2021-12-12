@@ -8,7 +8,7 @@ const StatisticTable = ({ data, type }) => {
   const [statInfoList, setStatInfoList] = useState([]);
   const [nameList, setNameList] = useState([]);
   const [dummyCounter, setDummyCounter] = useState([]);
-  console.log(data);
+
   useMemo(() => {
     if (data) {
       switch (type) {
@@ -42,42 +42,28 @@ const StatisticTable = ({ data, type }) => {
   console.log(dummyCounter);
   return (
     <>
-      {dummyCounter.map((item, index) => {
-        if (index % 4 === 1) {
-          return (
-            <RowContainer style={{ height: type === "single" && 80 }}>
-              {[0, 1, 2, 3].map((item, index2) => (
-                dummyCounter[index + item] ?  
-                  <div>
-                    <CompareTable
-                      keys={nameList}
-                      data={
-                        type === "compare"
-                          ? [dummyCounter[index + item], statInfoList[0][dummyCounter[index + item]], colors.blue,
-                          statInfoList[1][dummyCounter[index + item]], colors.orange,
-                          ]
-                          : type === "single"
-                            ? [
-                              {
-                                country: dummyCounter[index + item],
-                                [nameList[0]]:
-                                  statInfoList[0][dummyCounter[index + item]],
-                                [nameList[0] + "Color"]: colors.blue,
-                                [nameList[1]]:
-                                  statInfoList[1][dummyCounter[index + item]],
-                                [nameList[1] + "Color"]: colors.orange,
-                              },
-                            ]
-                            : null
-                      }
-                    />
-                  </div>
-                  : null
-              ))}
-            </RowContainer>
-          );
+      <CompareTable
+        columnList={nameList}
+        parentIndex={'1'}
+        dummyCounter={dummyCounter}
+        data={
+          type === "compare"
+            ? data
+            : type === "single"
+              ? [
+                // {
+                //   country: dummyCounter[index + item],
+                //   [nameList[0]]:
+                //     statInfoList[0][dummyCounter[index + item]],
+                //   [nameList[0] + "Color"]: colors.blue,
+                //   [nameList[1]]:
+                //     statInfoList[1][dummyCounter[index + item]],
+                //   [nameList[1] + "Color"]: colors.orange,
+                // },
+              ]
+              : null
         }
-      })}
+      />
     </>
   )
 }
@@ -92,7 +78,7 @@ const RowContainer = styled.div`
   align-items: center;
   & > div {
     display: flex;
-    width: 100%;
+    width: 80%;
     & > :first-child {
       width: 100%;
       align-self: center;
