@@ -10,7 +10,7 @@ const TextBadge = ({text, color, backgroundColor}) => {
 };
 
 const TextBadgeP = styled.p`
-  font-size: 15px;
+  font-size: 14px;
   padding: 7.5px 30px;
   border-radius: 5px;
   text-align: center;
