@@ -6,11 +6,12 @@ import root from "window-or-global";
 import StatisticGraph from "../components/graph/StatisticGraph";
 import TextBadge from "../components/Badge/TextBadge";
 import { colors } from "../constants/colors";
-import { CompareContentGraphDiv, CompareDiv, CompareTopDiv, CompareBottomDiv } from "./compare";
+import { CompareContentGraphDiv, CompareDiv, CompareTopDiv, CompareBottomDiv, CompareModalSetDiv } from "./compare";
 import {
   convertHitterStat,
   convertPitcherStat,
 } from "../utils/ConvertStatInfo";
+import { StyleModal } from "../components/Modal/StyleModal";
 
 const SinglePage = ({ pid }) => {
   const [playerInfo, setPlayerInfo] = useState(null);
@@ -80,7 +81,10 @@ const SinglePage = ({ pid }) => {
   return !loading && playerInfo ? (
     <CompareDiv>
       <CompareTopDiv>
-        <ProfileModal side={"A"} data={playerInfo.p1Info} />
+        <CompareModalSetDiv>
+          <ProfileModal side={"A"} data={playerInfo.p1Info} />
+          <StyleModal side={"A"} styleList={Object.values(playerInfo.p1Info.styleInfo)} />
+        </CompareModalSetDiv>
       </CompareTopDiv>
       )
       <CompareContentGraphDiv>
@@ -105,6 +109,7 @@ const SinglePage = ({ pid }) => {
     </div>
   );
 };
+
 
 SinglePage.getInitialProps = async (context) => {
   const { pid } = context.query;
