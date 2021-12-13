@@ -8,7 +8,7 @@ import BarGraph from "./BarGraph";
 const StatisticGraph = ({ data, type }) => {
   const [statInfoList, setStatInfoList] = useState([]);
   const [nameList, setNameList] = useState([]);
-  const [dummyCounter, setDummyCounter] = useState([]);
+  var [dummyCounter, setDummyCounter] = useState([]);
 
   useMemo(() => {
     if (data) {
@@ -40,7 +40,16 @@ const StatisticGraph = ({ data, type }) => {
       setDummyCounter(Object.keys(statInfoList[0]));
     }
   }, [statInfoList, type]);
-
+  
+  // dummyCounter.includes('OPS') ? dummyCounter = ['WAR','G','타석','타수','득점','안타','2타','3타','홈런','타점','도루','도실','볼넷','사구','삼진','병살','희타','타율','출루','장타','OPS','woba','WRC+'] 
+  // : dummyCounter = ['WAR','G','선발','이닝',
+  //   '승','패','홀드','세이브',
+  //   '완투','완봉','실점','탈삼진',
+  //   '볼넷','사구','고의사구','피안타',
+  //   '피2타','피3타','피홈런','보크',
+  //   '폭투','실책','FIP','FIP+',
+  //   'ERA','ERA+','WHIP'];
+  // console.log(dummyCounter);
   return (
     <>
       <RowContainerType2>
@@ -76,7 +85,7 @@ const StatisticGraph = ({ data, type }) => {
         </div>
       </RowContainerType2>
       {dummyCounter.map((item, index) => {
-        if (index % 4 === 1) {
+        if (index % 4 === 0) {
           return (
             <RowContainer style={{ height: type === "single" && 80 }}>
               {[0, 1, 2, 3].map((item, index2) => (
