@@ -5,10 +5,26 @@ import { valueExtractor } from "../../utils/functions";
 import TextBadge from "../Badge/TextBadge";
 import BarGraph from "./BarGraph";
 
+
+const hitterStats = ['WAR','G','타석','타수',
+'득점','안타','2타','3타',
+'홈런','타점','도루','도실',
+'볼넷','사구','삼진','병살',
+'희타','타율','출루','장타',
+'OPS','woba','WRC+'];
+
+const pitcherStats = ['WAR','G','선발','이닝',
+'승','패','홀드','세이브',
+'완투','완봉','실점','탈삼진',
+'볼넷','사구','고의사구','피안타',
+'피2타','피3타','피홈런','보크',
+'폭투','실책','FIP','FIP+',
+'ERA','ERA+','WHIP'];
+
 const StatisticGraph = ({ data, type }) => {
   const [statInfoList, setStatInfoList] = useState([]);
   const [nameList, setNameList] = useState([]);
-  var [dummyCounter, setDummyCounter] = useState([]);
+  const [dummyCounter, setDummyCounter] = useState([]);
 
   useMemo(() => {
     if (data) {
@@ -37,19 +53,36 @@ const StatisticGraph = ({ data, type }) => {
 
   useMemo(() => {
     if (statInfoList.length !== 0) {
-      setDummyCounter(Object.keys(statInfoList[0]));
+      if (Object.keys(statInfoList[0]).includes('타점')){
+        setDummyCounter(hitterStats);
+      }
+      else{
+        setDummyCounter(pitcherStats);
+      }
     }
   }, [statInfoList, type]);
-  
-  // dummyCounter.includes('OPS') ? dummyCounter = ['WAR','G','타석','타수','득점','안타','2타','3타','홈런','타점','도루','도실','볼넷','사구','삼진','병살','희타','타율','출루','장타','OPS','woba','WRC+'] 
-  // : dummyCounter = ['WAR','G','선발','이닝',
-  //   '승','패','홀드','세이브',
-  //   '완투','완봉','실점','탈삼진',
-  //   '볼넷','사구','고의사구','피안타',
-  //   '피2타','피3타','피홈런','보크',
-  //   '폭투','실책','FIP','FIP+',
-  //   'ERA','ERA+','WHIP'];
-  // console.log(dummyCounter);
+  console.log(dummyCounter);
+
+  // const hitterStats = { 0:'WAR', 1:'G',2:'타석',3:'타수',
+  //   4:'득점',5:'안타',6:'2타',7:'3타',
+  //   8:'홈런',9:'타점',10:'도루',11:'도실',
+  //   12:'볼넷',13:'사구',14:'삼진',15:'병살',
+  //   16:'희타',17:'타율',18:'출루',19:'장타',
+  //   20:'OPS',21:'woba',22:'WRC+'};
+
+  // const pitcherStats = {0:'WAR',1:'G',2:'선발',3:'이닝',
+  //   4:'승',5:'패',6:'홀드',7:'세이브',
+  //   8:'완투',9:'완봉',10:'실점',11:'탈삼진',
+  //   12:'볼넷',13:'사구',14:'고의사구',15:'피안타',
+  //   16:'피2타',17:'피3타',18:'피홈런',19:'보크',
+  //   20:'폭투',21:'실책',22:'FIP',23:'FIP+',
+  //   24:'ERA',25:'ERA+',26:'WHIP'};
+
+  console.log(dummyCounter);
+  console.log(22, hitterStats);
+  //dummyCounter = hitterStats;
+  //Object.values(dummyCounter).includes('OPS') ? dummyCounter = hitterStats : dummyCounter = pitcherStats;
+  console.log(dummyCounter);
   return (
     <>
       <RowContainerType2>
@@ -98,12 +131,13 @@ const StatisticGraph = ({ data, type }) => {
                       backgroundColor={colors.gray}
                     />
                   </div>
+                  {console.log(dummyCounter)}
                   <BarGraph
                     keys={nameList}
                     data={
                       type === "compare"
                         ? [
-                            {
+                            { 
                               country: dummyCounter[index + item],
                               [nameList[0]]:
                                 statInfoList[0][dummyCounter[index + item]],
